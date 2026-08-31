@@ -5,6 +5,7 @@ import { CartProvider } from "@/lib/cart-context";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartSidebar from "@/components/CartSidebar";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans", weight: ["300", "400", "500"] });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", style: ["normal", "italic"] });
@@ -17,13 +18,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${dmSans.variable} ${playfair.variable}`} suppressHydrationWarning>
       <body className="bg-cream-50 font-sans">
         <CartProvider>
           <Header />
           <CartSidebar />
           <main>{children}</main>
           <Footer />
+          <ThemeSwitcher />
         </CartProvider>
       </body>
     </html>

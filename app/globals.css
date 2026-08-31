@@ -51,3 +51,57 @@ body {
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--color-cream-100); }
 ::-webkit-scrollbar-thumb { background: var(--color-cream-300); border-radius: 99px; }
+
+/* ── Theme 2: Dark Luxury Gold ────────────────────────────────── */
+[data-theme="dark"] {
+  --color-cream-50: #0C0A06;
+  --color-cream-100: #181410;
+  --color-cream-200: #252018;
+  --color-cream-300: #3A3325;
+  --color-cream-400: #6B5E42;
+
+  --color-espresso: #F2E4C0;
+  --color-espresso-light: #DFD0A8;
+  --color-espresso-muted: #A8956E;
+
+  --color-terracotta: #C9A44C;
+  --color-terracotta-light: #E5C872;
+  --color-terracotta-dark: #A07E30;
+
+  --color-olive: #8A9B6A;
+  --color-olive-light: #A8BF88;
+  --color-olive-dark: #657248;
+}
+
+[data-theme="dark"] body {
+  background-color: var(--color-cream-50);
+  color: var(--color-espresso);
+}
+
+/* ── Theme 3: Bold Abstract ───────────────────────────────────── */
+[data-theme="bold"] {
+  --color-cream-50: #F7F4EE;
+  --color-cream-100: #EDEBE4;
+  --color-cream-200: #DEDAD0;
+  --color-cream-300: #C8C2B4;
+  --color-cream-400: #9E9688;
+
+  --color-espresso: #0A0A0A;
+  --color-espresso-light: #1E1E1E;
+  --color-espresso-muted: #555555;
+
+  --color-terracotta: #E8320A;
+  --color-terracotta-light: #FF6040;
+  --color-terracotta-dark: #B82500;
+
+  --color-olive: #1A40CC;
+  --color-olive-light: #4468E8;
+  --color-olive-dark: #0E2899;
+}
+
+[data-theme="bold"] body {
+  background-color: var(--color-cream-50);
+  color: var(--color-espresso);
+  font-feature-settings: "ss01" 1;
+  letter-spacing: -0.01em;
+}
