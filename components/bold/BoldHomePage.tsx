@@ -6,196 +6,247 @@ import { products, collections } from "@/lib/data";
 import BoldProductCard from "./BoldProductCard";
 
 const CDN = "https://cdn.shopify.com/s/files/1/0763/3672/6242/files";
-const featured = products.filter((p) => p.isBestseller || p.isNew).slice(0, 9);
+const featured   = products.filter((p) => p.isBestseller || p.isNew).slice(0, 6);
+const newArrivals = products.filter((p) => p.isNew).slice(0, 4);
 const MARQUEE = "HAND-KNOTTED · HAND-TUFTED · DHURRIE · HANDLOOM · ARTISAN MADE · AGRA · JAIPUR · MIRZAPUR · ";
+
+/* Thin centred section-label — mirrors HoT's italic-above/caps-below pattern */
+function SectionLabel({ sub, title }: { sub: string; title: string }) {
+  return (
+    <div className="text-center mb-14">
+      <p className="font-serif italic text-espresso-muted text-base mb-1">{sub}</p>
+      <h2 className="font-display tracking-widest text-espresso" style={{ fontSize: "clamp(1.8rem,4vw,3rem)" }}>
+        {title}
+      </h2>
+      <div className="w-8 h-px bg-espresso-muted mx-auto mt-4" />
+    </div>
+  );
+}
+
+/* Bordered rectangle button — identical to HoT's CTA style */
+function RectButton({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      className="inline-block border border-espresso text-espresso font-mono-code text-[10px] tracking-[0.3em] uppercase px-8 py-3.5 hover:bg-espresso hover:text-cream-50 transition-colors"
+    >
+      {children}
+    </Link>
+  );
+}
 
 export default function BoldHomePage() {
   return (
-    <div>
+    <div className="bg-cream-50">
 
-      {/* ── HERO ────────────────────────────────────────────────────── */}
-      <section className="grid md:grid-cols-[55%_45%]" style={{ minHeight: "100svh" }}>
-
-        {/* Left — orange panel */}
-        <div className="bg-terracotta flex flex-col justify-between px-10 py-12 md:px-16 md:py-16 min-h-[70vw] md:min-h-0">
-          <p className="font-mono-code text-[10px] tracking-[0.3em] text-cream-50/60 uppercase">
-            Est. 2023 · Agra · Jaipur · Mirzapur
-          </p>
-
-          <div>
-            <h1
-              className="font-display text-cream-50 leading-[0.82] mb-8"
-              style={{ fontSize: "clamp(5.5rem, 14vw, 12rem)", letterSpacing: "-0.01em" }}
-            >
-              KAALEEN
-            </h1>
-            <div className="w-full h-px bg-cream-50/30 mb-7" />
-            <p className="font-mono-code text-cream-50/60 text-[10px] tracking-[0.3em] uppercase mb-1.5">Hand Crafted</p>
-            <p className="font-mono-code text-cream-50/60 text-[10px] tracking-[0.3em] uppercase mb-12">
-              Luxury Carpets · India
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/collections"
-                className="inline-block border-2 border-cream-50 text-cream-50 text-[11px] tracking-[0.3em] uppercase px-7 py-4 hover:bg-cream-50 hover:text-terracotta transition-colors font-mono-code"
-              >
-                Explore Catalogue →
-              </Link>
-              <Link
-                href="/collections/hand-knotted"
-                className="inline-block border-2 border-cream-50/30 text-cream-50/60 text-[11px] tracking-[0.3em] uppercase px-7 py-4 hover:border-cream-50/60 hover:text-cream-50/80 transition-colors font-mono-code"
-              >
-                Hand-Knotted
-              </Link>
-            </div>
-          </div>
-
-          <p className="font-mono-code text-[10px] tracking-[0.2em] text-cream-50/40 uppercase">
-            kaaleen.in
-          </p>
-        </div>
-
-        {/* Right — image */}
-        <div className="relative min-h-[60vw] md:min-h-0">
-          <Image src={`${CDN}/Adler7.jpg`} alt="Kaaleen" fill className="object-cover" priority unoptimized />
-          <div className="absolute bottom-5 right-5 bg-cream-50 border-l-4 border-terracotta px-4 py-2.5">
-            <p className="font-mono-code text-[9px] tracking-[0.25em] text-espresso uppercase">Adler Collection</p>
-          </div>
-        </div>
+      {/* ── HERO — full-bleed, no text overlay ─────────────────────── */}
+      <section className="relative w-full" style={{ height: "95vh" }}>
+        <Image
+          src={`${CDN}/Adler7.jpg`}
+          alt="Kaaleen luxury carpet"
+          fill
+          className="object-cover"
+          priority
+          unoptimized
+        />
       </section>
 
-      {/* ── MARQUEE — blue band ───────────────────────────────────── */}
-      <div className="bg-olive border-y-2 border-espresso overflow-hidden py-3.5">
-        <div className="flex whitespace-nowrap" style={{ animation: "marquee 26s linear infinite" }}>
+      {/* ── PRESENTING — centred text section below hero ───────────── */}
+      <section className="text-center py-20 px-6 border-b border-cream-200">
+        <p className="font-serif italic text-espresso-muted text-base mb-4">presenting</p>
+        <h1
+          className="font-display text-espresso leading-none mb-6"
+          style={{ fontSize: "clamp(3rem, 9vw, 8rem)", letterSpacing: "0.04em" }}
+        >
+          ICONS OF INDIAN CRAFT
+        </h1>
+        <p className="text-espresso-muted text-sm max-w-md mx-auto leading-relaxed mb-10">
+          Master artisans from Agra, Jaipur and Mirzapur weave centuries of tradition into every carpet.
+        </p>
+        <RectButton href="/collections">Discover the Collection</RectButton>
+      </section>
+
+      {/* ── MARQUEE ─────────────────────────────────────────────────── */}
+      <div className="bg-espresso border-y border-espresso overflow-hidden py-3">
+        <div className="flex whitespace-nowrap" style={{ animation: "marquee 30s linear infinite" }}>
           {Array.from({ length: 6 }).map((_, i) => (
-            <span key={i} className="font-mono-code text-cream-50 text-[10px] tracking-[0.35em] uppercase">
+            <span key={i} className="font-mono-code text-cream-50/50 text-[9px] tracking-[0.35em] uppercase">
               {MARQUEE}
             </span>
           ))}
         </div>
       </div>
 
-      {/* ── CATALOGUE ─────────────────────────────────────────────── */}
-      <section className="border-b-2 border-espresso">
-        <div className="px-8 md:px-10 py-5 border-b-2 border-espresso flex items-baseline justify-between">
-          <h2 className="font-display text-4xl text-espresso tracking-wide">Catalogue</h2>
-          <span className="font-mono-code text-[10px] text-espresso-muted tracking-[0.2em]">
-            {String(featured.length).padStart(2, "0")} Works
-          </span>
+      {/* ── NEW ARRIVALS — editorial product scroll ─────────────────── */}
+      <section className="py-24 px-6 md:px-16 border-b border-cream-200">
+        <SectionLabel sub="just landed" title="NEW ARRIVALS" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          {newArrivals.map((p, i) => (
+            <BoldProductCard key={p.id} product={p} index={i + 1} />
+          ))}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-5">
+        <div className="text-center mt-14">
+          <RectButton href="/collections">View All Carpets</RectButton>
+        </div>
+      </section>
+
+      {/* ── EDITORIAL BANNER 1 — collection feature ─────────────────── */}
+      <section className="border-b border-cream-200">
+        <div className="relative w-full" style={{ height: "80vh" }}>
+          <Image
+            src={`${CDN}/Brilliance.jpg`}
+            alt="Hand-Knotted collection"
+            fill
+            className="object-cover"
+            unoptimized
+          />
+        </div>
+        <div className="text-center py-16 px-6">
+          <p className="font-serif italic text-espresso-muted text-sm mb-2">the finest</p>
+          <h3 className="font-display text-espresso tracking-widest mb-2" style={{ fontSize: "clamp(2rem,5vw,4rem)" }}>
+            HAND-KNOTTED
+          </h3>
+          <p className="font-display text-espresso tracking-widest mb-1" style={{ fontSize: "clamp(2rem,5vw,4rem)" }}>
+            COLLECTION
+          </p>
+          <div className="w-8 h-px bg-espresso-muted mx-auto mt-4 mb-8" />
+          <p className="text-espresso-muted text-sm max-w-sm mx-auto leading-relaxed mb-10">
+            Three months. 160,000 knots. One carpet built to last generations.
+          </p>
+          <RectButton href="/collections/hand-knotted">Shop This Collection</RectButton>
+        </div>
+      </section>
+
+      {/* ── FEATURED — 3-col product grid ───────────────────────────── */}
+      <section className="py-24 px-6 md:px-16 border-b border-cream-200">
+        <SectionLabel sub="handpicked" title="FEATURED WORKS" />
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
           {featured.map((p, i) => (
             <BoldProductCard key={p.id} product={p} index={i + 1} />
           ))}
         </div>
-        <div className="px-8 md:px-10 py-4 border-t-2 border-espresso flex justify-end">
-          <Link href="/collections" className="font-mono-code text-[10px] tracking-[0.25em] uppercase text-espresso hover:text-terracotta transition-colors">
-            View All Works →
-          </Link>
+      </section>
+
+      {/* ── EDITORIAL BANNER 2 — full-bleed + CTA below ─────────────── */}
+      <section className="border-b border-cream-200">
+        <div className="relative w-full" style={{ height: "75vh" }}>
+          <Image
+            src={`${CDN}/harb1_1.png`}
+            alt="Carpet in room"
+            fill
+            className="object-cover"
+            unoptimized
+          />
+        </div>
+        <div className="text-center py-16 px-6">
+          <p className="font-serif italic text-espresso-muted text-sm mb-3">for every space</p>
+          <h3 className="font-display text-espresso tracking-widest" style={{ fontSize: "clamp(2rem,6vw,5rem)" }}>
+            THE ART OF FINE LIVING
+          </h3>
+          <div className="w-8 h-px bg-espresso-muted mx-auto mt-4 mb-10" />
+          <RectButton href="/collections">Shop This Edit</RectButton>
         </div>
       </section>
 
-      {/* ── STATS — alternating orange / blue ─────────────────────── */}
-      <section className="grid grid-cols-2 md:grid-cols-4 border-b-2 border-espresso">
-        {[
-          { value: "5,000", sup: "+", label: "Carpets Delivered", bg: "bg-terracotta" },
-          { value: "200",   sup: "+", label: "Master Artisans",   bg: "bg-olive" },
-          { value: "500",   sup: "",  label: "Years of Craft",    bg: "bg-terracotta" },
-          { value: "4.9",   sup: "★", label: "Average Rating",   bg: "bg-olive" },
-        ].map(({ value, sup, label, bg }, i) => (
-          <div key={label} className={`${bg} px-8 py-14 border-r-2 border-espresso last:border-r-0`}>
-            <p className="font-display text-cream-50 leading-none mb-3" style={{ fontSize: "clamp(3rem, 6vw, 5rem)" }}>
-              {value}<span className="opacity-60">{sup}</span>
-            </p>
-            <p className="font-mono-code text-[9px] tracking-[0.3em] uppercase text-cream-50/60">{label}</p>
-          </div>
-        ))}
-      </section>
-
-      {/* ── MANIFESTO ─────────────────────────────────────────────── */}
-      <section className="grid md:grid-cols-2 border-b-2 border-espresso">
-        {/* Left — blue bg, big quote */}
-        <div className="bg-olive px-10 md:px-16 py-20 border-r-2 border-espresso">
-          <p className="font-mono-code text-[9px] tracking-[0.35em] uppercase text-cream-50/50 mb-10">Manifesto</p>
-          <blockquote
-            className="font-display text-cream-50 leading-[0.9]"
-            style={{ fontSize: "clamp(2.8rem, 5.5vw, 5rem)" }}
-          >
-            EVERY KNOT IS AN ACT OF INTENTION.
-          </blockquote>
-          <p className="font-mono-code text-[9px] tracking-[0.2em] text-cream-50/40 mt-10 uppercase">
-            Kaaleen Studio · 2023
-          </p>
-        </div>
-
-        {/* Right — body + collection links */}
-        <div className="px-10 md:px-16 py-20 flex flex-col justify-center gap-7">
-          <p className="text-espresso-muted leading-relaxed text-sm">
-            Kaaleen works directly with master craftsmen in Agra, Jaipur, and Mirzapur. Families who have been weaving for generations, keeping alive a tradition over 500 years old.
-          </p>
-          <p className="text-espresso-muted leading-relaxed text-sm">
-            A single 6×9 hand-knotted carpet requires three months of work and over 160,000 individual knots. When you bring one home, you bring that story with it.
-          </p>
-          <div className="border-t-2 border-espresso pt-7 space-y-3">
-            {[
-              { label: "Hand-Knotted", href: "/collections/hand-knotted" },
-              { label: "Hand-Tufted",  href: "/collections/hand-tufted" },
-              { label: "Dhurrie",      href: "/collections/dhurrie" },
-              { label: "Handloom",     href: "/collections/handloom" },
-            ].map(({ label, href }) => (
-              <Link key={label} href={href}
-                className="flex items-center justify-between text-[11px] tracking-[0.2em] uppercase text-espresso hover:text-terracotta transition-colors group font-mono-code">
-                {label}
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── COLLECTIONS — grayscale to colour ─────────────────────── */}
-      <section className="border-b-2 border-espresso">
-        <div className="px-8 md:px-10 py-5 border-b-2 border-espresso flex items-baseline justify-between">
-          <h2 className="font-display text-4xl text-espresso tracking-wide">Collections</h2>
-          <span className="font-mono-code text-[10px] text-espresso-muted tracking-[0.2em]">04 Categories</span>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4">
-          {collections.map((col, i) => (
-            <Link key={col.slug} href={`/collections/${col.slug}`}
-              className="group relative aspect-square overflow-hidden border-r-2 border-espresso last:border-r-0">
-              <Image src={col.image} alt={col.name} fill
-                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" unoptimized />
-              <div className="absolute inset-0 bg-espresso/40 group-hover:bg-espresso/20 transition-colors" />
-              <div className="absolute bottom-0 left-0 right-0 border-t-2 border-espresso/60 group-hover:border-terracotta p-5 transition-colors">
-                <p className="font-mono-code text-[8px] tracking-[0.3em] text-cream-50/50 mb-1">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <p className="font-mono-code text-cream-50 text-[10px] tracking-[0.2em] uppercase">{col.name}</p>
+      {/* ── COLLECTIONS — 4 up editorial grid ───────────────────────── */}
+      <section className="py-24 px-6 md:px-16 border-b border-cream-200">
+        <SectionLabel sub="explore by craft" title="COLLECTIONS" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          {collections.map((col) => (
+            <Link key={col.slug} href={`/collections/${col.slug}`} className="group">
+              <div className="relative aspect-[3/4] overflow-hidden mb-4">
+                <Image
+                  src={col.image}
+                  alt={col.name}
+                  fill
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  unoptimized
+                />
               </div>
+              <p className="font-mono-code text-[10px] tracking-[0.25em] uppercase text-espresso-muted mb-0.5">
+                {col.count} carpets
+              </p>
+              <p className="font-display text-espresso tracking-widest" style={{ fontSize: "1.25rem" }}>
+                {col.name.toUpperCase()}
+              </p>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* ── FULL-BLEED CLOSE ──────────────────────────────────────── */}
-      <section className="relative overflow-hidden" style={{ minHeight: "65vh" }}>
-        <Image src={`${CDN}/Brilliance.jpg`} alt="Carpet detail" fill className="object-cover" unoptimized />
-        <div className="absolute inset-0 bg-espresso/65" />
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-[65vh] text-center px-8 py-24 gap-8">
-          <p className="font-mono-code text-[9px] tracking-[0.4em] text-cream-50/50 uppercase">
-            Free Shipping · 7-Day Returns · India-Wide
-          </p>
-          <h3 className="font-display text-cream-50 leading-[0.88]" style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}>
-            BUILT TO LAST<br />
-            <span className="text-terracotta">GENERATIONS.</span>
-          </h3>
-          <Link
-            href="/collections"
-            className="inline-block border-2 border-cream-50 text-cream-50 font-mono-code text-[10px] tracking-[0.3em] uppercase px-8 py-4 hover:bg-terracotta hover:border-terracotta transition-colors"
-          >
-            Shop the Full Catalogue →
-          </Link>
+      {/* ── THE ARTISANS ─────────────────────────────────────────────── */}
+      <section className="py-24 px-6 md:px-16 border-b border-cream-200">
+        <SectionLabel sub="the" title="ARTISANS" />
+        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center max-w-5xl mx-auto">
+          {/* B&W image */}
+          <div className="relative aspect-[4/5] overflow-hidden">
+            <Image
+              src={`${CDN}/Adler7.jpg`}
+              alt="Kaaleen artisan"
+              fill
+              className="object-cover grayscale"
+              unoptimized
+            />
+          </div>
+          {/* Story */}
+          <div>
+            <p className="font-serif italic text-espresso-muted text-sm mb-6">A 500-year tradition</p>
+            <blockquote
+              className="font-display text-espresso leading-[0.9] mb-8"
+              style={{ fontSize: "clamp(2rem,4vw,3.2rem)" }}
+            >
+              EVERY KNOT IS AN ACT OF INTENTION.
+            </blockquote>
+            <p className="text-espresso-muted text-sm leading-relaxed mb-4">
+              Kaaleen works directly with master craftsmen in Agra, Jaipur, and Mirzapur — families who have been weaving for generations, keeping alive a tradition over 500 years old.
+            </p>
+            <p className="text-espresso-muted text-sm leading-relaxed mb-10">
+              A single 6×9 hand-knotted carpet requires three months of work and over 160,000 individual knots. When you bring one home, you bring that story with it.
+            </p>
+            <RectButton href="/collections/hand-knotted">Explore Hand-Knotted</RectButton>
+          </div>
         </div>
+      </section>
+
+      {/* ── A LITTLE BIT ABOUT US ────────────────────────────────────── */}
+      <section className="py-24 px-6 text-center border-b border-cream-200">
+        <h3
+          className="font-serif italic text-espresso mb-6"
+          style={{ fontSize: "clamp(2rem,5vw,3.5rem)" }}
+        >
+          A little bit about us
+        </h3>
+        <p className="text-espresso-muted text-sm max-w-lg mx-auto leading-relaxed mb-3">
+          Kaaleen is a destination for India's finest handcrafted carpets — curated from artisan studios across Agra, Jaipur, and Mirzapur.
+        </p>
+        <p className="text-espresso-muted text-sm max-w-lg mx-auto leading-relaxed mb-10">
+          Each piece is made without machines, by families who have spent generations perfecting their craft.
+        </p>
+        <div className="flex items-center justify-center gap-6">
+          {[
+            { value: "5,000+", label: "Carpets sold" },
+            { value: "200+",   label: "Master artisans" },
+            { value: "500 yrs", label: "Of tradition" },
+            { value: "4.9★",   label: "Avg. rating" },
+          ].map(({ value, label }) => (
+            <div key={label} className="text-center px-6 border-r border-cream-300 last:border-r-0">
+              <p className="font-display text-espresso text-2xl mb-0.5">{value}</p>
+              <p className="font-mono-code text-[9px] tracking-[0.2em] uppercase text-espresso-muted">{label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── VIEW ALL EDITS — two dark CTAs like HoT ──────────────────── */}
+      <section className="grid md:grid-cols-2">
+        <Link href="/collections"
+          className="bg-espresso text-cream-50 text-center font-mono-code text-[10px] tracking-[0.3em] uppercase py-5 hover:bg-espresso-light transition-colors border-r border-cream-400/20">
+          View All Carpets
+        </Link>
+        <Link href="/collections/hand-knotted"
+          className="bg-espresso text-cream-50 text-center font-mono-code text-[10px] tracking-[0.3em] uppercase py-5 hover:bg-espresso-light transition-colors">
+          Hand-Knotted Heirlooms
+        </Link>
       </section>
 
     </div>

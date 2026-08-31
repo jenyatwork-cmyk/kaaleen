@@ -8,9 +8,10 @@ import { Product } from "@/lib/types";
 import { formatPrice } from "@/lib/data";
 import { useCart } from "@/lib/cart-context";
 
-export default function BoldProductCard({ product, index }: { product: Product; index: number }) {
+export default function BoldProductCard({ product, index: _index }: { product: Product; index: number }) {
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   function handleAdd(e: React.MouseEvent) {
     e.preventDefault();
@@ -21,88 +22,88 @@ export default function BoldProductCard({ product, index }: { product: Product; 
     setTimeout(() => setAdded(false), 1600);
   }
 
-  const num = String(index).padStart(2, "0");
+  const discount = Math.round((1 - product.price / product.compareAtPrice) * 100);
 
   return (
-    <article className="group border-2 border-espresso bg-cream-50">
+    <article
+      className="group"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
       <Link href={`/products/${product.handle}`} className="block">
 
-        {/* Image */}
-        <div className="relative aspect-square overflow-hidden bg-cream-100 border-b-2 border-espresso">
+        {/* Portrait image */}
+        <div className="relative aspect-[3/4] overflow-hidden bg-cream-100 mb-4">
           <Image
-            src={product.images[0]}
+            src={hovered && product.images[1] ? product.images[1] : product.images[0]}
             alt={product.name}
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-105"
             unoptimized
           />
 
-          {/* Catalog index — top left */}
-          <span className="absolute top-4 left-5 font-display text-[4.5rem] leading-none select-none text-cream-50/20 group-hover:text-cream-50/40 transition-colors">
-            {num}
-          </span>
+          {/* Discount badge */}
+          {discount > 0 && (
+            <span className="absolute top-3 left-3 bg-terracotta text-cream-50 font-mono-code text-[9px] tracking-wider px-2 py-1">
+              -{discount}%
+            </span>
+          )}
 
-          {/* Badges — top right */}
-          <div className="absolute top-4 right-4 flex flex-col gap-1">
-            {product.isNew && (
-              <span className="font-mono-code text-[8px] tracking-[0.2em] uppercase bg-terracotta text-cream-50 px-2 py-1">New</span>
-            )}
-            {product.isBestseller && (
-              <span className="font-mono-code text-[8px] tracking-[0.2em] uppercase bg-espresso text-cream-50 px-2 py-1">Best</span>
-            )}
-          </div>
+          {/* NEW badge */}
+          {product.isNew && !discount && (
+            <span className="absolute top-3 left-3 bg-espresso text-cream-50 font-mono-code text-[9px] tracking-wider px-2 py-1">
+              New
+            </span>
+          )}
 
-          {/* Add to bag icon — bottom right */}
-          <button
-            onClick={handleAdd}
-            disabled={!product.inStock}
-            title={product.inStock ? "Add to bag" : "Sold out"}
-            className={`absolute bottom-4 right-4 w-10 h-10 flex items-center justify-center border-2 transition-all duration-200
-              ${added
-                ? "bg-olive border-olive text-cream-50"
-                : product.inStock
-                  ? "bg-espresso border-espresso text-cream-50 hover:bg-terracotta hover:border-terracotta"
-                  : "bg-cream-200 border-cream-300 text-espresso-muted cursor-not-allowed"
-              }`}
-          >
-            {added
-              ? <Check size={14} strokeWidth={2.5} />
-              : <ShoppingBag size={14} strokeWidth={1.8} />
-            }
-          </button>
-
+          {/* Sold out overlay */}
           {!product.inStock && (
-            <div className="absolute inset-0 bg-cream-50/70 flex items-center justify-center">
-              <span className="font-mono-code text-[9px] tracking-[0.3em] uppercase text-espresso-muted border border-espresso-muted px-3 py-1.5">
+            <div className="absolute inset-0 bg-cream-50/60 flex items-center justify-center">
+              <span className="font-mono-code text-[9px] tracking-[0.25em] uppercase text-espresso-muted border border-espresso-muted px-3 py-1.5">
                 Sold Out
               </span>
             </div>
           )}
+
+          {/* Add to bag — appears on hover, corner icon */}
+          <button
+            onClick={handleAdd}
+            disabled={!product.inStock}
+            title="Add to bag"
+            className={`absolute bottom-3 right-3 w-9 h-9 flex items-center justify-center transition-all duration-200
+              ${hovered ? "opacity-100" : "opacity-0"}
+              ${added
+                ? "bg-espresso text-cream-50"
+                : "bg-cream-50 text-espresso hover:bg-espresso hover:text-cream-50"
+              }
+              disabled:opacity-0`}
+          >
+            {added ? <Check size={13} strokeWidth={2.5} /> : <ShoppingBag size={13} strokeWidth={1.6} />}
+          </button>
         </div>
 
-        {/* Info */}
-        <div className="p-6">
-          <div className="flex items-start justify-between gap-3 mb-3">
-            <h3 className="text-xs tracking-[0.1em] uppercase font-medium text-espresso leading-snug flex-1">
-              {product.name}
-            </h3>
-            <span className="font-mono-code text-[9px] text-espresso-muted shrink-0 mt-0.5">{num}</span>
-          </div>
-
-          <div className="flex items-baseline gap-3 mb-5">
-            <span className="font-mono-code text-sm font-bold text-espresso">{formatPrice(product.price)}</span>
+        {/* Info — HoT style: price first, name below, attribution */}
+        <div className="space-y-1.5">
+          <div className="flex items-baseline gap-2">
+            <span className="text-sm font-medium text-espresso">{formatPrice(product.price)}</span>
             {product.compareAtPrice > product.price && (
-              <span className="font-mono-code text-xs text-espresso-muted line-through">{formatPrice(product.compareAtPrice)}</span>
+              <span className="text-xs text-espresso-muted line-through">{formatPrice(product.compareAtPrice)}</span>
             )}
           </div>
 
-          <div className="flex flex-wrap gap-1.5">
-            {product.sizes.slice(0, 5).map((s) => (
-              <span key={s} className="font-mono-code text-[8px] tracking-wider uppercase border border-cream-300 px-2 py-1 text-espresso-muted hover:border-espresso hover:text-espresso transition-colors">
-                {s}
-              </span>
-            ))}
-          </div>
+          <h3 className="text-sm text-espresso leading-snug group-hover:text-terracotta transition-colors">
+            {product.name}
+          </h3>
+
+          <p className="font-mono-code text-[10px] tracking-wider uppercase text-espresso-muted">
+            By {product.material}
+          </p>
+
+          {product.sizes.length > 0 && (
+            <p className="font-mono-code text-[9px] tracking-wider text-espresso-muted/70 uppercase">
+              Options available
+            </p>
+          )}
         </div>
 
       </Link>
