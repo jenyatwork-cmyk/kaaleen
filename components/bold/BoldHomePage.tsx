@@ -2,143 +2,133 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { products, collections, formatPrice } from "@/lib/data";
+import { products, collections } from "@/lib/data";
 import BoldProductCard from "./BoldProductCard";
 
 const CDN = "https://cdn.shopify.com/s/files/1/0763/3672/6242/files";
 const featured = products.filter((p) => p.isBestseller || p.isNew).slice(0, 9);
-const MARQUEE_TEXT = "HAND-KNOTTED · HAND-TUFTED · DHURRIE · HANDLOOM · ARTISAN MADE · AGRA · JAIPUR · MIRZAPUR · ";
+const MARQUEE = "HAND-KNOTTED · HAND-TUFTED · DHURRIE · HANDLOOM · ARTISAN MADE · AGRA · JAIPUR · MIRZAPUR · ";
 
 export default function BoldHomePage() {
   return (
-    <div className="border-t-2 border-espresso">
+    <div>
 
-      {/* ── HERO ──────────────────────────────────────────────────────── */}
+      {/* ── HERO ────────────────────────────────────────────────────── */}
       <section className="grid md:grid-cols-[55%_45%]" style={{ minHeight: "100svh" }}>
-        {/* Left: typographic */}
-        <div className="bg-espresso flex flex-col justify-between p-10 md:p-16 min-h-[55vw] md:min-h-0 border-r-2 border-espresso">
-          <p className="font-mono text-[10px] tracking-[0.35em] text-espresso-muted uppercase">
+
+        {/* Left — orange panel */}
+        <div className="bg-terracotta flex flex-col justify-between px-10 py-12 md:px-16 md:py-16 min-h-[70vw] md:min-h-0">
+          <p className="font-mono-code text-[10px] tracking-[0.3em] text-cream-50/60 uppercase">
             Est. 2023 · Agra · Jaipur · Mirzapur
           </p>
 
           <div>
             <h1
-              className="font-serif text-cream-50 leading-[0.88] tracking-tight mb-8"
-              style={{ fontSize: "clamp(5rem, 12vw, 10rem)" }}
+              className="font-display text-cream-50 leading-[0.82] mb-8"
+              style={{ fontSize: "clamp(5.5rem, 14vw, 12rem)", letterSpacing: "-0.01em" }}
             >
-              KAA<br />LEEN
+              KAALEEN
             </h1>
-            <div className="w-full h-[2px] bg-espresso-muted mb-8" />
-            <p className="text-cream-400 text-[11px] tracking-[0.3em] uppercase mb-1">Hand Crafted</p>
-            <p className="text-cream-400 text-[11px] tracking-[0.3em] uppercase mb-12">
+            <div className="w-full h-px bg-cream-50/30 mb-7" />
+            <p className="font-mono-code text-cream-50/60 text-[10px] tracking-[0.3em] uppercase mb-1.5">Hand Crafted</p>
+            <p className="font-mono-code text-cream-50/60 text-[10px] tracking-[0.3em] uppercase mb-12">
               Luxury Carpets · India
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/collections"
-                className="inline-block border-2 border-cream-50 text-cream-50 text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:bg-cream-50 hover:text-espresso transition-colors"
+                className="inline-block border-2 border-cream-50 text-cream-50 text-[11px] tracking-[0.3em] uppercase px-7 py-4 hover:bg-cream-50 hover:text-terracotta transition-colors font-mono-code"
               >
                 Explore Catalogue →
               </Link>
               <Link
                 href="/collections/hand-knotted"
-                className="inline-block border-2 border-espresso-muted text-espresso-muted text-[11px] tracking-[0.25em] uppercase px-7 py-3.5 hover:border-cream-400 hover:text-cream-400 transition-colors"
+                className="inline-block border-2 border-cream-50/30 text-cream-50/60 text-[11px] tracking-[0.3em] uppercase px-7 py-4 hover:border-cream-50/60 hover:text-cream-50/80 transition-colors font-mono-code"
               >
                 Hand-Knotted
               </Link>
             </div>
           </div>
 
-          <p className="font-mono text-[10px] tracking-[0.2em] text-espresso-muted">
+          <p className="font-mono-code text-[10px] tracking-[0.2em] text-cream-50/40 uppercase">
             kaaleen.in
           </p>
         </div>
 
-        {/* Right: image */}
+        {/* Right — image */}
         <div className="relative min-h-[60vw] md:min-h-0">
-          <Image
-            src={`${CDN}/Adler7.jpg`}
-            alt="Kaaleen carpet"
-            fill
-            className="object-cover"
-            priority
-            unoptimized
-          />
-          {/* Catalogue label overlay */}
-          <div className="absolute bottom-6 right-6 bg-cream-50 border-2 border-espresso px-4 py-2">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-espresso uppercase">Adler Collection</p>
+          <Image src={`${CDN}/Adler7.jpg`} alt="Kaaleen" fill className="object-cover" priority unoptimized />
+          <div className="absolute bottom-5 right-5 bg-cream-50 border-l-4 border-terracotta px-4 py-2.5">
+            <p className="font-mono-code text-[9px] tracking-[0.25em] text-espresso uppercase">Adler Collection</p>
           </div>
         </div>
       </section>
 
-      {/* ── MARQUEE ───────────────────────────────────────────────────── */}
-      <div className="bg-terracotta border-y-2 border-espresso overflow-hidden py-3.5">
-        <div className="flex whitespace-nowrap" style={{ animation: "marquee 28s linear infinite" }}>
+      {/* ── MARQUEE — blue band ───────────────────────────────────── */}
+      <div className="bg-olive border-y-2 border-espresso overflow-hidden py-3.5">
+        <div className="flex whitespace-nowrap" style={{ animation: "marquee 26s linear infinite" }}>
           {Array.from({ length: 6 }).map((_, i) => (
-            <span key={i} className="text-cream-50 text-[11px] tracking-[0.3em] uppercase font-medium mr-0">
-              {MARQUEE_TEXT}
+            <span key={i} className="font-mono-code text-cream-50 text-[10px] tracking-[0.35em] uppercase">
+              {MARQUEE}
             </span>
           ))}
         </div>
       </div>
 
-      {/* ── CATALOGUE ─────────────────────────────────────────────────── */}
-      <section>
-        <div className="border-b-2 border-espresso px-8 md:px-16 py-5 flex items-center justify-between">
-          <h2 className="text-[11px] tracking-[0.35em] uppercase font-medium text-espresso">Catalogue</h2>
-          <span className="font-mono text-[10px] text-espresso-muted">{String(featured.length).padStart(2, "0")} Works</span>
+      {/* ── CATALOGUE ─────────────────────────────────────────────── */}
+      <section className="border-b-2 border-espresso">
+        <div className="px-8 md:px-10 py-5 border-b-2 border-espresso flex items-baseline justify-between">
+          <h2 className="font-display text-4xl text-espresso tracking-wide">Catalogue</h2>
+          <span className="font-mono-code text-[10px] text-espresso-muted tracking-[0.2em]">
+            {String(featured.length).padStart(2, "0")} Works
+          </span>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-l-2 border-espresso divide-x-0 sm:divide-x-2 divide-y-0 sm:divide-y-0 border-b-2 [&>*]:border-b-2 [&>*]:border-espresso" style={{ borderColor: "var(--color-espresso)" }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-5">
           {featured.map((p, i) => (
-            <div key={p.id} className={`${(i + 1) % 3 !== 0 ? "sm:border-r-2" : ""} border-r-2 border-espresso`}>
-              <BoldProductCard product={p} index={i + 1} />
-            </div>
+            <BoldProductCard key={p.id} product={p} index={i + 1} />
           ))}
         </div>
-        <div className="border-b-2 border-espresso px-8 md:px-16 py-5 flex justify-end">
-          <Link
-            href="/collections"
-            className="font-mono text-[10px] tracking-[0.25em] uppercase text-espresso hover:text-terracotta transition-colors"
-          >
+        <div className="px-8 md:px-10 py-4 border-t-2 border-espresso flex justify-end">
+          <Link href="/collections" className="font-mono-code text-[10px] tracking-[0.25em] uppercase text-espresso hover:text-terracotta transition-colors">
             View All Works →
           </Link>
         </div>
       </section>
 
-      {/* ── STATS ─────────────────────────────────────────────────────── */}
+      {/* ── STATS — alternating orange / blue ─────────────────────── */}
       <section className="grid grid-cols-2 md:grid-cols-4 border-b-2 border-espresso">
         {[
-          { value: "5,000", sup: "+", label: "Carpets Delivered" },
-          { value: "200",   sup: "+", label: "Master Artisans" },
-          { value: "500",   sup: "",  label: "Years of Craft" },
-          { value: "4.9",   sup: "★", label: "Average Rating" },
-        ].map(({ value, sup, label }, i) => (
-          <div
-            key={label}
-            className={`px-8 py-14 border-r-2 border-espresso ${i % 2 === 0 ? "bg-espresso text-cream-50" : "bg-cream-50 text-espresso"}`}
-          >
-            <p className="font-serif leading-none mb-4" style={{ fontSize: "clamp(2.5rem, 5vw, 4.5rem)" }}>
-              {value}<span className="text-terracotta">{sup}</span>
+          { value: "5,000", sup: "+", label: "Carpets Delivered", bg: "bg-terracotta" },
+          { value: "200",   sup: "+", label: "Master Artisans",   bg: "bg-olive" },
+          { value: "500",   sup: "",  label: "Years of Craft",    bg: "bg-terracotta" },
+          { value: "4.9",   sup: "★", label: "Average Rating",   bg: "bg-olive" },
+        ].map(({ value, sup, label, bg }, i) => (
+          <div key={label} className={`${bg} px-8 py-14 border-r-2 border-espresso last:border-r-0`}>
+            <p className="font-display text-cream-50 leading-none mb-3" style={{ fontSize: "clamp(3rem, 6vw, 5rem)" }}>
+              {value}<span className="opacity-60">{sup}</span>
             </p>
-            <p className="text-[10px] tracking-[0.3em] uppercase opacity-50">{label}</p>
+            <p className="font-mono-code text-[9px] tracking-[0.3em] uppercase text-cream-50/60">{label}</p>
           </div>
         ))}
       </section>
 
-      {/* ── MANIFESTO ─────────────────────────────────────────────────── */}
+      {/* ── MANIFESTO ─────────────────────────────────────────────── */}
       <section className="grid md:grid-cols-2 border-b-2 border-espresso">
-        <div className="border-r-2 border-espresso px-10 md:px-16 py-20">
-          <p className="text-[10px] tracking-[0.35em] uppercase text-espresso-muted mb-12">Manifesto</p>
+        {/* Left — blue bg, big quote */}
+        <div className="bg-olive px-10 md:px-16 py-20 border-r-2 border-espresso">
+          <p className="font-mono-code text-[9px] tracking-[0.35em] uppercase text-cream-50/50 mb-10">Manifesto</p>
           <blockquote
-            className="font-serif italic text-espresso leading-[1.05]"
-            style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.8rem)" }}
+            className="font-display text-cream-50 leading-[0.9]"
+            style={{ fontSize: "clamp(2.8rem, 5.5vw, 5rem)" }}
           >
-            "Every knot<br />is an act<br />of intention."
+            EVERY KNOT IS AN ACT OF INTENTION.
           </blockquote>
-          <p className="font-mono text-[10px] tracking-[0.2em] text-espresso-muted mt-10">
-            — Kaaleen Studio, 2023
+          <p className="font-mono-code text-[9px] tracking-[0.2em] text-cream-50/40 mt-10 uppercase">
+            Kaaleen Studio · 2023
           </p>
         </div>
+
+        {/* Right — body + collection links */}
         <div className="px-10 md:px-16 py-20 flex flex-col justify-center gap-7">
           <p className="text-espresso-muted leading-relaxed text-sm">
             Kaaleen works directly with master craftsmen in Agra, Jaipur, and Mirzapur. Families who have been weaving for generations, keeping alive a tradition over 500 years old.
@@ -146,18 +136,15 @@ export default function BoldHomePage() {
           <p className="text-espresso-muted leading-relaxed text-sm">
             A single 6×9 hand-knotted carpet requires three months of work and over 160,000 individual knots. When you bring one home, you bring that story with it.
           </p>
-          <div className="border-t-2 border-espresso pt-7 flex flex-col gap-3">
+          <div className="border-t-2 border-espresso pt-7 space-y-3">
             {[
               { label: "Hand-Knotted", href: "/collections/hand-knotted" },
-              { label: "Hand-Tufted", href: "/collections/hand-tufted" },
-              { label: "Dhurrie", href: "/collections/dhurrie" },
-              { label: "Handloom", href: "/collections/handloom" },
+              { label: "Hand-Tufted",  href: "/collections/hand-tufted" },
+              { label: "Dhurrie",      href: "/collections/dhurrie" },
+              { label: "Handloom",     href: "/collections/handloom" },
             ].map(({ label, href }) => (
-              <Link
-                key={label}
-                href={href}
-                className="flex items-center justify-between text-[11px] tracking-[0.2em] uppercase text-espresso hover:text-terracotta transition-colors group"
-              >
+              <Link key={label} href={href}
+                className="flex items-center justify-between text-[11px] tracking-[0.2em] uppercase text-espresso hover:text-terracotta transition-colors group font-mono-code">
                 {label}
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
               </Link>
@@ -166,63 +153,45 @@ export default function BoldHomePage() {
         </div>
       </section>
 
-      {/* ── COLLECTIONS GRID ──────────────────────────────────────────── */}
-      <section>
-        <div className="border-b-2 border-espresso px-8 md:px-16 py-5 flex items-center justify-between">
-          <h2 className="text-[11px] tracking-[0.35em] uppercase font-medium">Collections</h2>
-          <span className="font-mono text-[10px] text-espresso-muted">04 Categories</span>
+      {/* ── COLLECTIONS — grayscale to colour ─────────────────────── */}
+      <section className="border-b-2 border-espresso">
+        <div className="px-8 md:px-10 py-5 border-b-2 border-espresso flex items-baseline justify-between">
+          <h2 className="font-display text-4xl text-espresso tracking-wide">Collections</h2>
+          <span className="font-mono-code text-[10px] text-espresso-muted tracking-[0.2em]">04 Categories</span>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 border-b-2 border-espresso">
+        <div className="grid grid-cols-2 md:grid-cols-4">
           {collections.map((col, i) => (
-            <Link
-              key={col.slug}
-              href={`/collections/${col.slug}`}
-              className="group relative aspect-square overflow-hidden border-r-2 border-espresso last:border-r-0"
-            >
-              <Image
-                src={col.image}
-                alt={col.name}
-                fill
-                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                unoptimized
-              />
-              <div className="absolute inset-0 bg-espresso/50 group-hover:bg-espresso/30 transition-colors" />
-              <div className="absolute inset-0 flex flex-col justify-end p-5 border-t-0">
-                <span className="font-mono text-[9px] tracking-[0.3em] text-espresso-muted mb-1">
+            <Link key={col.slug} href={`/collections/${col.slug}`}
+              className="group relative aspect-square overflow-hidden border-r-2 border-espresso last:border-r-0">
+              <Image src={col.image} alt={col.name} fill
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" unoptimized />
+              <div className="absolute inset-0 bg-espresso/40 group-hover:bg-espresso/20 transition-colors" />
+              <div className="absolute bottom-0 left-0 right-0 border-t-2 border-espresso/60 group-hover:border-terracotta p-5 transition-colors">
+                <p className="font-mono-code text-[8px] tracking-[0.3em] text-cream-50/50 mb-1">
                   {String(i + 1).padStart(2, "0")}
-                </span>
-                <p className="text-cream-50 text-[11px] tracking-[0.2em] uppercase font-medium">{col.name}</p>
-                <p className="text-cream-400 text-[10px] font-mono mt-0.5">{col.count} works</p>
+                </p>
+                <p className="font-mono-code text-cream-50 text-[10px] tracking-[0.2em] uppercase">{col.name}</p>
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* ── FULL BLEED CLOSING BANNER ──────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b-2 border-espresso" style={{ minHeight: "60vh" }}>
-        <Image
-          src={`${CDN}/Brilliance.jpg`}
-          alt="Kaaleen carpet detail"
-          fill
-          className="object-cover"
-          unoptimized
-        />
-        <div className="absolute inset-0 bg-espresso/70" />
-        <div className="relative z-10 flex flex-col items-center justify-center h-full min-h-[60vh] text-center px-8 py-24">
-          <p className="font-mono text-[10px] tracking-[0.4em] text-espresso-muted uppercase mb-6">
+      {/* ── FULL-BLEED CLOSE ──────────────────────────────────────── */}
+      <section className="relative overflow-hidden" style={{ minHeight: "65vh" }}>
+        <Image src={`${CDN}/Brilliance.jpg`} alt="Carpet detail" fill className="object-cover" unoptimized />
+        <div className="absolute inset-0 bg-espresso/65" />
+        <div className="relative z-10 flex flex-col items-center justify-center min-h-[65vh] text-center px-8 py-24 gap-8">
+          <p className="font-mono-code text-[9px] tracking-[0.4em] text-cream-50/50 uppercase">
             Free Shipping · 7-Day Returns · India-Wide
           </p>
-          <h3
-            className="font-serif text-cream-50 leading-tight mb-8"
-            style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
-          >
-            Built to last<br />
-            <span className="text-terracotta italic">generations.</span>
+          <h3 className="font-display text-cream-50 leading-[0.88]" style={{ fontSize: "clamp(3rem, 8vw, 7rem)" }}>
+            BUILT TO LAST<br />
+            <span className="text-terracotta">GENERATIONS.</span>
           </h3>
           <Link
             href="/collections"
-            className="inline-block border-2 border-cream-50 text-cream-50 text-[11px] tracking-[0.3em] uppercase px-8 py-4 hover:bg-cream-50 hover:text-espresso transition-colors"
+            className="inline-block border-2 border-cream-50 text-cream-50 font-mono-code text-[10px] tracking-[0.3em] uppercase px-8 py-4 hover:bg-terracotta hover:border-terracotta transition-colors"
           >
             Shop the Full Catalogue →
           </Link>

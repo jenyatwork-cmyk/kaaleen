@@ -85,29 +85,33 @@ body {
 
 /* ── Theme 3: Bold Abstract ───────────────────────────────────── */
 [data-theme="bold"] {
-  --color-cream-50: #F7F4EE;
-  --color-cream-100: #EDEBE4;
-  --color-cream-200: #DEDAD0;
-  --color-cream-300: #C8C2B4;
-  --color-cream-400: #9E9688;
+  --color-cream-50: #F9F7F3;
+  --color-cream-100: #F0ECE5;
+  --color-cream-200: #E4DDD4;
+  --color-cream-300: #C8BEB2;
+  --color-cream-400: #9E9285;
 
-  --color-espresso: #0A0A0A;
-  --color-espresso-light: #1E1E1E;
-  --color-espresso-muted: #555555;
+  --color-espresso: #0C0C0A;
+  --color-espresso-light: #1E1E1A;
+  --color-espresso-muted: #5A5248;
 
-  --color-terracotta: #E8320A;
-  --color-terracotta-light: #FF6040;
-  --color-terracotta-dark: #B82500;
+  --color-terracotta: #F05D1E;
+  --color-terracotta-light: #FF7A40;
+  --color-terracotta-dark: #CC4A14;
 
-  --color-olive: #1A40CC;
-  --color-olive-light: #4468E8;
-  --color-olive-dark: #0E2899;
+  --color-olive: #1A3CC8;
+  --color-olive-light: #3558E8;
+  --color-olive-dark: #102890;
 }
 
 [data-theme="bold"] body {
   background-color: var(--color-cream-50);
   color: var(--color-espresso);
 }
+
+/* Bold-specific font utilities */
+.font-display { font-family: var(--font-bebas), Impact, "Arial Narrow", sans-serif; }
+.font-mono-code { font-family: var(--font-space-mono), "Courier New", monospace; }
 
 /* Strip rounded corners everywhere in bold theme */
 [data-theme="bold"] *,
