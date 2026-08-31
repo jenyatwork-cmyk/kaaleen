@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-cream-50: #FDFAF5;
+  --color-cream-100: #F5F0E8;
+  --color-cream-200: #EDE4D4;
+  --color-cream-300: #DED5C4;
+  --color-cream-400: #C8B99A;
+
+  --color-espresso: #1A1208;
+  --color-espresso-light: #3D2E18;
+  --color-espresso-muted: #6B5744;
+
+  --color-terracotta: #C4622D;
+  --color-terracotta-light: #E8855A;
+  --color-terracotta-dark: #9E4C21;
+
+  --color-olive: #5C6B3A;
+  --color-olive-light: #7A8F52;
+  --color-olive-dark: #3F4A28;
+
+  /* Fonts loaded via next/font in layout.tsx */
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+
+  --animate-fade-in: fadeIn 0.4s ease-out;
+  --animate-slide-in: slideIn 0.35s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-cream-50);
+  color: var(--color-espresso);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-cream-100); }
+::-webkit-scrollbar-thumb { background: var(--color-cream-300); border-radius: 99px; }
