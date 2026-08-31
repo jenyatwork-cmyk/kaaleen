@@ -70,7 +70,7 @@ export default function ProductCard({ product }: { product: Product }) {
         </div>
 
         {/* Info */}
-        <div className="space-y-1 px-0.5">
+        <div className="space-y-1.5 px-0.5">
           <p className="text-[11px] text-espresso-muted tracking-widest uppercase">{product.material}</p>
           <h3 className="text-sm font-medium text-espresso leading-snug line-clamp-2 group-hover:text-terracotta transition-colors">
             {product.name}
@@ -79,6 +79,16 @@ export default function ProductCard({ product }: { product: Product }) {
             <span className="text-sm font-medium text-espresso">{formatPrice(product.price)}</span>
             {product.compareAtPrice > product.price && (
               <span className="text-xs text-espresso-muted line-through">{formatPrice(product.compareAtPrice)}</span>
+            )}
+          </div>
+          <div className="flex flex-wrap gap-1 pt-0.5">
+            {product.sizes.slice(0, 4).map((size) => (
+              <span key={size} className="text-[10px] text-espresso-muted border border-cream-300 rounded px-1.5 py-0.5 leading-tight">
+                {size}
+              </span>
+            ))}
+            {product.sizes.length > 4 && (
+              <span className="text-[10px] text-espresso-muted">+{product.sizes.length - 4}</span>
             )}
           </div>
         </div>

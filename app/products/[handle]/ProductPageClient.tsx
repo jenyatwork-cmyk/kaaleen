@@ -140,7 +140,7 @@ export default function ProductPageClient({ product, related }: Props) {
             }`}
           >
             <ShoppingBag size={18} />
-            {!product.inStock ? "Sold out — check back soon" : added ? "Added to your bag!" : "Add to bag"}
+            {!product.inStock ? "Sold out, check back soon" : added ? "Added to your bag!" : "Add to bag"}
           </button>
 
           {/* Trust signals */}
@@ -165,7 +165,7 @@ export default function ProductPageClient({ product, related }: Props) {
                     <ul className="mt-4 space-y-2">
                       {product.features.map((f) => (
                         <li key={f} className="flex items-start gap-2 text-sm text-espresso-muted">
-                          <span className="text-olive font-medium mt-0.5">—</span>
+                          <span className="text-olive font-medium mt-0.5">·</span>
                           {f}
                         </li>
                       ))}

@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 flex flex-col sm:flex-row items-center gap-6">
           <div className="sm:flex-1">
             <p className="font-serif text-2xl italic text-cream-200">Join the Carpet Collective</p>
-            <p className="text-sm text-cream-400 mt-1">Stories from the loom, new arrivals, and care guides — in your inbox.</p>
+            <p className="text-sm text-cream-400 mt-1">Stories from the loom, new arrivals, and care guides, delivered to your inbox.</p>
           </div>
           <NewsletterForm />
         </div>

@@ -25,7 +25,7 @@ export default function HomePage() {
             unoptimized
           />
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-espresso/80 via-espresso/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-espresso/90 via-espresso/50 to-espresso/20" />
         </div>
 
         {/* Content */}
@@ -37,7 +37,7 @@ export default function HomePage() {
               <span className="italic text-cream-300">tells a story</span>
             </h1>
             <p className="text-cream-200 text-base sm:text-lg leading-relaxed mb-8 max-w-md">
-              Master artisans weave centuries of tradition into each carpet. From hand-knotted heirlooms to vibrant dhurries — find the one that speaks to your home.
+              Master artisans weave centuries of tradition into each carpet. From hand-knotted heirlooms to vibrant dhurries, find the one that speaks to your home.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link href="/collections" className="inline-flex items-center justify-center gap-2 bg-cream-50 text-espresso px-7 py-3.5 rounded-full text-sm font-medium hover:bg-white transition-colors">
@@ -142,7 +142,7 @@ export default function HomePage() {
                 <span className="italic text-terracotta">woven into every thread</span>
               </h2>
               <p className="text-espresso-muted leading-relaxed mb-4">
-                Kaaleen was born from a simple belief: that the world's most beautiful carpets deserve to be in more homes. We work directly with master craftsmen in Agra, Jaipur, and Mirzapur — families who have been weaving for generations.
+                Kaaleen was born from a simple belief: that the world's most beautiful carpets deserve to be in more homes. We work directly with master craftsmen in Agra, Jaipur, and Mirzapur, families who have been weaving for generations.
               </p>
               <p className="text-espresso-muted leading-relaxed mb-8">
                 Each carpet is made without machines. A 6×9 hand-knotted carpet takes three months and over 160,000 individual knots. When you bring one home, you bring that story with it.
