@@ -195,7 +195,7 @@ function HeroSection() {
     <section
       ref={sectionRef}
       className="relative"
-      style={{ height: "calc(100svh - 98px)", background: "#1A040A", overflow: "hidden" }}
+      style={{ height: "50svh", background: "#1A040A", overflow: "hidden" }}
     >
       {/* Darkened background — same image, reduced opacity */}
       <img
@@ -249,52 +249,11 @@ function HeroSection() {
           clipPath="url(#hero-arch-clip)"
         />
 
-        {/* ── Flourish lines ── */}
-        {(() => {
-          const stroke = "rgba(244,234,210,0.28)";
-          const sw = clip.sw; const sh = clip.sh;
-          const pad = 28; // inset from edges
-          const arm = 48; // length of corner L-arms
-          const cx = sw / 2;
-          // horizontal rule lines at ~22% and ~78% height
-          const hy1 = sh * 0.22; const hy2 = sh * 0.78;
-          // gap around center (arch area)
-          const gapX = clip.ax - 24; const gapXr = clip.ax + clip.aw + 24;
-          return (
-            <g stroke={stroke} strokeWidth="0.75" fill="none">
-              {/* Corner L brackets — top-left */}
-              <polyline points={`${pad + arm},${pad} ${pad},${pad} ${pad},${pad + arm}`} />
-              {/* top-right */}
-              <polyline points={`${sw - pad - arm},${pad} ${sw - pad},${pad} ${sw - pad},${pad + arm}`} />
-              {/* bottom-left */}
-              <polyline points={`${pad + arm},${sh - pad} ${pad},${sh - pad} ${pad},${sh - pad - arm}`} />
-              {/* bottom-right */}
-              <polyline points={`${sw - pad - arm},${sh - pad} ${sw - pad},${sh - pad} ${sw - pad},${sh - pad - arm}`} />
-
-              {/* Horizontal rule — top, broken around arch */}
-              <line x1={pad + arm + 8} y1={hy1} x2={gapX} y2={hy1} />
-              <line x1={gapXr} y1={hy1} x2={sw - pad - arm - 8} y2={hy1} />
-              {/* Small diamond ticks on the rules */}
-              <polygon points={`${pad + arm + 8},${hy1 - 3} ${pad + arm + 14},${hy1} ${pad + arm + 8},${hy1 + 3} ${pad + arm + 2},${hy1}`} fill={stroke} stroke="none" />
-              <polygon points={`${sw - pad - arm - 8},${hy1 - 3} ${sw - pad - arm - 14},${hy1} ${sw - pad - arm - 8},${hy1 + 3} ${sw - pad - arm - 2},${hy1}`} fill={stroke} stroke="none" />
-
-              {/* Horizontal rule — bottom */}
-              <line x1={pad + arm + 8} y1={hy2} x2={gapX} y2={hy2} />
-              <line x1={gapXr} y1={hy2} x2={sw - pad - arm - 8} y2={hy2} />
-              <polygon points={`${pad + arm + 8},${hy2 - 3} ${pad + arm + 14},${hy2} ${pad + arm + 8},${hy2 + 3} ${pad + arm + 2},${hy2}`} fill={stroke} stroke="none" />
-              <polygon points={`${sw - pad - arm - 8},${hy2 - 3} ${sw - pad - arm - 14},${hy2} ${sw - pad - arm - 8},${hy2 + 3} ${sw - pad - arm - 2},${hy2}`} fill={stroke} stroke="none" />
-
-              {/* Vertical center tick at top and bottom */}
-              <line x1={cx} y1={pad + arm + 8} x2={cx} y2={hy1 - 8} />
-              <line x1={cx} y1={hy2 + 8} x2={cx} y2={sh - pad - arm - 8} />
-            </g>
-          );
-        })()}
       </svg>
 
       {/* Content column */}
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <div style={{ width: "min(300px, 60vw)" }}>
+        <div style={{ width: "min(175px, 34vw)" }}>
 
           {/* Arch placeholder — measured for SVG clip alignment */}
           <div ref={archRef} style={{ width: "100%", aspectRatio: "550/787", position: "relative" }}>
@@ -304,7 +263,7 @@ function HeroSection() {
                 src="/logo.png"
                 alt="Kaaleen"
                 style={{
-                  height: "clamp(4rem, 14vw, 9rem)",
+                  height: "clamp(2rem, 7vw, 4rem)",
                   width: "auto",
                   maxWidth: "82%",
                   filter: "invert(1)",
@@ -315,7 +274,7 @@ function HeroSection() {
           </div>
 
           {/* CTA — 24px below arch */}
-          <div style={{ marginTop: "24px" }}>
+          <div style={{ marginTop: "12px" }}>
             <GalaButton href="/collections" light fullWidth>Shop the Collection</GalaButton>
           </div>
 
