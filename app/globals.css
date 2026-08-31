@@ -57,6 +57,32 @@ body {
 ::-webkit-scrollbar-track { background: var(--color-cream-100); }
 ::-webkit-scrollbar-thumb { background: var(--color-cream-300); border-radius: 99px; }
 
+/* ── Theme 1: Vintage Wine ────────────────────────────────── */
+[data-theme="light"] {
+  /* Warm parchment — card fills, cartouche interior */
+  --color-cream-50: #F4EAD2;
+  --color-cream-100: #E8D4AE;
+  --color-cream-200: #CBAF84;
+  --color-cream-300: #AA8C5C;
+  --color-cream-400: #886838;
+
+  /* Dark text on light parchment */
+  --color-espresso: #160608;
+  --color-espresso-light: #300E14;
+  --color-espresso-muted: #7A3838;
+
+  /* Muted antique gold/olive — buttons, ornament strokes */
+  --color-terracotta: #8A7040;
+  --color-terracotta-light: #AA9060;
+  --color-terracotta-dark: #6A5228;
+
+  /* Deep wine burgundy — brand accent, script, headings */
+  --color-olive: #6A1218;
+  --color-olive-light: #8A1E26;
+  --color-olive-dark: #460A10;
+}
+
+
 /* ── Theme 2: Dark Luxury Gold ────────────────────────────────── */
 [data-theme="dark"] {
   --color-cream-50: #0C0A06;

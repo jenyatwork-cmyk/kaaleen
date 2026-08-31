@@ -12,9 +12,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType>({ theme: "light", setTheme: () => {} });
 
 function applyTheme(theme: Theme) {
-  const root = document.documentElement;
-  if (theme === "light") root.removeAttribute("data-theme");
-  else root.setAttribute("data-theme", theme);
+  document.documentElement.setAttribute("data-theme", theme);
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {

@@ -4,7 +4,7 @@ import NewsletterForm from "./NewsletterForm";
 
 export default function Footer() {
   return (
-    <footer className="bg-espresso text-cream-100 mt-24">
+    <footer className="bg-espresso text-cream-100">
       {/* Newsletter */}
       <div className="border-b border-espresso-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 flex flex-col sm:flex-row items-center gap-6">

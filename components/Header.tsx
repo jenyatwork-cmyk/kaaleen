@@ -4,9 +4,12 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { ShoppingBag, Search, Menu, X } from "lucide-react";
 import { useCart } from "@/lib/cart-context";
+import { useTheme } from "@/lib/theme-context";
 
 export default function Header() {
   const { count, openCart } = useCart();
+  const { theme } = useTheme();
+  const isVintage = theme === "light";
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -31,17 +34,21 @@ export default function Header() {
         FREE SHIPPING ACROSS INDIA · USE CODE <span className="font-medium">KAALEEN10</span> FOR 10% OFF
       </div>
 
-      <header className={`sticky top-0 z-40 transition-all duration-300 ${scrolled ? "bg-cream-50/95 backdrop-blur-sm shadow-sm" : "bg-cream-50"}`}>
+      <header className={`sticky top-0 z-40 transition-all duration-300 ${isVintage ? "" : "bg-cream-50"}`}
+        style={isVintage ? { background: "#2A0810" } : undefined}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="font-serif text-2xl tracking-tight text-espresso hover:text-terracotta transition-colors">
+          <Link href="/" className={`font-serif text-2xl tracking-tight transition-colors ${isVintage ? "" : "text-espresso hover:text-terracotta"}`}
+            style={isVintage ? { color: "var(--color-cream-50)" } : undefined}>
             kaaleen
           </Link>
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="text-sm text-espresso-muted hover:text-espresso transition-colors tracking-wide">
+              <Link key={link.href} href={link.href}
+                className={`text-sm transition-colors tracking-wide ${isVintage ? "" : "text-espresso-muted hover:text-espresso"}`}
+                style={isVintage ? { color: "rgba(244,234,210,0.7)" } : undefined}>
                 {link.label}
               </Link>
             ))}
@@ -49,10 +56,14 @@ export default function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-4">
-            <button aria-label="Search" className="text-espresso-muted hover:text-espresso transition-colors">
+            <button aria-label="Search"
+              className={`transition-colors ${isVintage ? "" : "text-espresso-muted hover:text-espresso"}`}
+              style={isVintage ? { color: "rgba(244,234,210,0.7)" } : undefined}>
               <Search size={20} />
             </button>
-            <button onClick={openCart} aria-label={`Cart (${count} items)`} className="relative text-espresso-muted hover:text-espresso transition-colors">
+            <button onClick={openCart} aria-label={`Cart (${count} items)`}
+              className={`relative transition-colors ${isVintage ? "" : "text-espresso-muted hover:text-espresso"}`}
+              style={isVintage ? { color: "rgba(244,234,210,0.7)" } : undefined}>
               <ShoppingBag size={20} />
               {count > 0 && (
                 <span suppressHydrationWarning className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-terracotta text-white text-[10px] rounded-full flex items-center justify-center font-medium">
@@ -60,7 +71,9 @@ export default function Header() {
                 </span>
               )}
             </button>
-            <button onClick={() => setMenuOpen(true)} aria-label="Menu" className="lg:hidden text-espresso-muted hover:text-espresso transition-colors">
+            <button onClick={() => setMenuOpen(true)} aria-label="Menu"
+              className={`lg:hidden transition-colors ${isVintage ? "" : "text-espresso-muted hover:text-espresso"}`}
+              style={isVintage ? { color: "rgba(244,234,210,0.7)" } : undefined}>
               <Menu size={22} />
             </button>
           </div>

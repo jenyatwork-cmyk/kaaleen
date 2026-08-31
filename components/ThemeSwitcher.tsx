@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useTheme, type Theme } from "@/lib/theme-context";
 
 const themes: { id: Theme; label: string; desc: string; dot: string }[] = [
-  { id: "light", label: "V1", desc: "Light",  dot: "#C4622D" },
+  { id: "light", label: "V1", desc: "Vintage", dot: "#B8960A" },
   { id: "dark",  label: "V2", desc: "Luxury", dot: "#C9A44C" },
   { id: "bold",  label: "V3", desc: "Bold",   dot: "#E8320A" },
 ];
