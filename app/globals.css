@@ -28,6 +28,11 @@
   --animate-slide-in: slideIn 0.35s ease-out;
 }
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
@@ -102,6 +107,20 @@ body {
 [data-theme="bold"] body {
   background-color: var(--color-cream-50);
   color: var(--color-espresso);
-  font-feature-settings: "ss01" 1;
-  letter-spacing: -0.01em;
+}
+
+/* Strip rounded corners everywhere in bold theme */
+[data-theme="bold"] *,
+[data-theme="bold"] *::before,
+[data-theme="bold"] *::after {
+  border-radius: 0 !important;
+}
+
+/* Bold header: add bottom border, keep bg */
+[data-theme="bold"] header {
+  border-bottom: 2px solid var(--color-espresso) !important;
+}
+
+[data-theme="bold"] .announcement-bar-inner {
+  letter-spacing: 0.2em;
 }

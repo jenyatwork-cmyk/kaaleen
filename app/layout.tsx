@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
+import { ThemeProvider } from "@/lib/theme-context";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartSidebar from "@/components/CartSidebar";
@@ -20,13 +21,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${dmSans.variable} ${playfair.variable}`} suppressHydrationWarning>
       <body className="bg-cream-50 font-sans">
-        <CartProvider>
-          <Header />
-          <CartSidebar />
-          <main>{children}</main>
-          <Footer />
-          <ThemeSwitcher />
-        </CartProvider>
+        <ThemeProvider>
+          <CartProvider>
+            <Header />
+            <CartSidebar />
+            <main>{children}</main>
+            <Footer />
+            <ThemeSwitcher />
+          </CartProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
