@@ -401,7 +401,7 @@ export default function VintageHomePage() {
         </svg>
 
         <div className="py-12 px-4 md:px-16">
-          <OrnateHeader eyebrow="just arrived" title="The New Collection" />
+          <OrnateHeader eyebrow="handcrafted" title="Handpicked for You" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 mt-12">
             {newArrivals.map((p, idx) => {
@@ -465,7 +465,7 @@ export default function VintageHomePage() {
 
       {/* ── FEATURED WORKS ──────────────────────────────────── */}
       <section className="py-24 px-6 md:px-16">
-        <OrnateHeader eyebrow="handpicked" title="Featured Works" light />
+        <OrnateHeader eyebrow="just arrived" title="The New Collection" light />
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12">
           {featured.map((p) => <VintageCard key={p.id} product={p} light />)}
         </div>
