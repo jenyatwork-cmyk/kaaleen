@@ -340,16 +340,15 @@ function CraftSection() {
       <section ref={sectionRef} className="relative hidden md:block"
         style={{ background: "#270303", minHeight: "clamp(480px, 48vw, 660px)", zIndex: 1, position: "relative" }}>
 
-        {/* Layer 0: bg — 140% height matches carpet so objectFit:cover gives identical crop; clipped to section */}
+        {/* Layer 0: bg — clipped to section, same crop as carpet */}
         <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
           <img src="/craft-bg.png" alt="" aria-hidden
             style={{ position: "absolute", left: 0, top: 0,
-                     width: "65%", height: "115%",
-                     objectFit: "cover", objectPosition: "center",
+                     width: "55%", height: "auto",
                      pointerEvents: "none" }} />
         </div>
 
-        {/* Layer 1: text — clipped to section so parallax never bleeds into next section */}
+        {/* Layer 1: text — clipped to section */}
         <div style={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 1 }}>
           <div ref={textRef} className="absolute flex flex-col justify-center items-end text-right"
             style={{ left: "52%", top: "50%", transform: "translateY(-50%)",
@@ -359,11 +358,10 @@ function CraftSection() {
           </div>
         </div>
 
-        {/* Layer 2: carpet — 115% height overflows below section; same crop as bg (identical height ratio) */}
+        {/* Layer 2: carpet — center 90% shifts crop toward bottom so img edge always lands in the PNG's transparent zone at any viewport width */}
         <img src="/craft-carpet.png" alt="" aria-hidden
           style={{ position: "absolute", left: 0, top: 0,
-                   width: "65%", height: "115%",
-                   objectFit: "cover", objectPosition: "center",
+                   width: "55%", height: "auto",
                    mixBlendMode: "screen", pointerEvents: "none", zIndex: 2 }} />
       </section>
     </>
