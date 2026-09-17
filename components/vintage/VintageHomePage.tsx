@@ -10,28 +10,8 @@ import { useCart } from "@/lib/cart-context";
 
 const CDN = "https://cdn.shopify.com/s/files/1/0763/3672/6242/files";
 const featured    = products.filter((p) => p.isBestseller || p.isNew).slice(0, 6);
-const newArrivals = products.filter((p) => p.isNew).slice(0, 4);
-
-/* ── Baroque cartouche — actual baroque SVG frame ─────────── */
-/* Outer subpath only — the ornamental border silhouette */
-const MUGHAL_PATH = "M550 787H0V294C113 229.5 47.8822 187.717 94.5 130C112.218 108.064 137.409 123.143 144.852 128.393C138.647 123.356 122.22 106.834 139.5 84C181.5 28.5 238.5 84.0001 275 0C311.5 84.0001 368.5 28.5 410.5 84C427.78 106.835 411.352 123.356 405.147 128.393C412.589 123.143 437.782 108.063 455.5 130C502.118 187.717 437 229.5 550 294V787Z";
-
-const BAROQUE_PATH ="M441 0C499.533 76.4287 590.94 25.9313 658.293 76.4287C685.995 97.1982 659.677 112.227 649.721 116.814C661.668 112.034 702.052 98.3294 730.456 118.282C804.63 170.387 702.41 208.219 877.805 266.128L882 267.5C700.789 326.186 805.214 364.203 730.456 416.718C702.051 436.671 661.668 422.965 649.721 418.185C659.677 422.772 685.995 437.802 658.293 458.571C590.94 509.069 499.533 458.571 441 535C382.467 458.571 291.06 509.069 223.707 458.571C196.006 437.802 222.321 422.772 232.278 418.185C220.33 422.965 179.948 436.67 151.544 416.718C77.3701 364.613 179.59 326.781 4.19531 268.872L0 267.5C181.211 208.814 76.786 170.797 151.544 118.282C179.948 98.3299 220.329 112.034 232.278 116.814C222.321 112.226 196.006 97.1977 223.707 76.4287C291.06 25.9313 382.467 76.4287 441 0ZM441 1.63184C411.577 39.2941 374.04 45.7177 335.745 48.9346C297.024 52.1872 257.697 52.194 224.307 77.2285C217.473 82.3523 214.109 87.0222 212.92 91.1338C211.743 95.2042 212.654 98.8799 214.717 102.156C216.796 105.459 220.032 108.326 223.412 110.667C226.783 113.002 230.24 114.774 232.697 115.906L231.907 117.743C225.977 115.37 212.991 110.785 197.981 109.269C182.962 107.751 166.045 109.319 152.119 119.101C133.589 132.117 126.249 144.162 122.768 155.786C121.017 161.63 120.232 167.399 119.515 173.222C118.8 179.023 118.152 184.897 116.661 190.821C113.659 202.752 107.253 214.841 90.2139 227.611C73.5886 240.072 46.8325 253.186 3.21582 267.5L4.50586 267.922L4.50879 267.923C48.3971 282.413 75.0198 295.678 91.3926 308.284C107.813 320.927 113.924 332.909 116.799 344.735C118.226 350.607 118.853 356.433 119.565 362.188C120.28 367.962 121.083 373.688 122.85 379.487C126.364 391.025 133.733 402.984 152.119 415.899C166.045 425.682 182.962 427.249 197.981 425.731C212.991 424.215 225.977 419.629 231.907 417.256L232.697 419.093C230.24 420.225 226.783 421.997 223.412 424.332C220.032 426.673 216.796 429.54 214.717 432.843C212.654 436.119 211.743 439.796 212.92 443.866C214.109 447.978 217.473 452.648 224.307 457.771C257.697 482.806 297.024 482.813 335.745 486.065C374.04 489.282 411.577 495.705 441 533.367C470.423 495.705 507.96 489.282 546.255 486.065C584.976 482.813 624.303 482.806 657.693 457.771C664.527 452.648 667.891 447.978 669.08 443.866C670.257 439.795 669.345 436.119 667.282 432.843C665.203 429.54 661.967 426.673 658.587 424.332C655.216 421.997 651.76 420.225 649.303 419.093L650.092 417.256C656.022 419.628 669.008 424.215 684.018 425.731C699.037 427.249 715.955 425.682 729.881 415.899C748.411 402.883 755.751 390.838 759.232 379.214C760.983 373.37 761.768 367.601 762.485 361.778C763.2 355.977 763.848 350.103 765.339 344.179C768.341 332.248 774.747 320.159 791.786 307.389C808.411 294.928 835.167 281.813 878.783 267.499L877.494 267.078L877.491 267.077C833.603 252.587 806.98 239.322 790.607 226.716C774.187 214.073 768.076 202.091 765.201 190.265C763.774 184.393 763.147 178.567 762.435 172.812C761.72 167.038 760.917 161.312 759.15 155.513C755.636 143.975 748.267 132.016 729.881 119.101C715.955 109.318 699.037 107.751 684.018 109.269C669.008 110.785 656.022 115.371 650.092 117.743L649.303 115.906C651.76 114.774 655.216 113.002 658.587 110.667C661.967 108.326 665.203 105.46 667.282 102.157C669.345 98.8807 670.257 95.2045 669.08 91.1338C667.891 87.0222 664.527 82.3524 657.693 77.2285C624.303 52.194 584.976 52.1872 546.255 48.9346C507.96 45.7177 470.423 39.2941 441 1.63184Z";
-
-/* Inner subpath only — the exact interior boundary of the baroque frame.
-   Used as a fill shape so parchment precisely matches the baroque interior (incl. arm areas). */
-const BAROQUE_INNER = "M441 1.63184C411.577 39.2941 374.04 45.7177 335.745 48.9346C297.024 52.1872 257.697 52.194 224.307 77.2285C217.473 82.3523 214.109 87.0222 212.92 91.1338C211.743 95.2042 212.654 98.8799 214.717 102.156C216.796 105.459 220.032 108.326 223.412 110.667C226.783 113.002 230.24 114.774 232.697 115.906L231.907 117.743C225.977 115.37 212.991 110.785 197.981 109.269C182.962 107.751 166.045 109.319 152.119 119.101C133.589 132.117 126.249 144.162 122.768 155.786C121.017 161.63 120.232 167.399 119.515 173.222C118.8 179.023 118.152 184.897 116.661 190.821C113.659 202.752 107.253 214.841 90.2139 227.611C73.5886 240.072 46.8325 253.186 3.21582 267.5L4.50586 267.922L4.50879 267.923C48.3971 282.413 75.0198 295.678 91.3926 308.284C107.813 320.927 113.924 332.909 116.799 344.735C118.226 350.607 118.853 356.433 119.565 362.188C120.28 367.962 121.083 373.688 122.85 379.487C126.364 391.025 133.733 402.984 152.119 415.899C166.045 425.682 182.962 427.249 197.981 425.731C212.991 424.215 225.977 419.629 231.907 417.256L232.697 419.093C230.24 420.225 226.783 421.997 223.412 424.332C220.032 426.673 216.796 429.54 214.717 432.843C212.654 436.119 211.743 439.796 212.92 443.866C214.109 447.978 217.473 452.648 224.307 457.771C257.697 482.806 297.024 482.813 335.745 486.065C374.04 489.282 411.577 495.705 441 533.367C470.423 495.705 507.96 489.282 546.255 486.065C584.976 482.813 624.303 482.806 657.693 457.771C664.527 452.648 667.891 447.978 669.08 443.866C670.257 439.795 669.345 436.119 667.282 432.843C665.203 429.54 661.967 426.673 658.587 424.332C655.216 421.997 651.76 420.225 649.303 419.093L650.092 417.256C656.022 419.628 669.008 424.215 684.018 425.731C699.037 427.249 715.955 425.682 729.881 415.899C748.411 402.883 755.751 390.838 759.232 379.214C760.983 373.37 761.768 367.601 762.485 361.778C763.2 355.977 763.848 350.103 765.339 344.179C768.341 332.248 774.747 320.159 791.786 307.389C808.411 294.928 835.167 281.813 878.783 267.499L877.494 267.078L877.491 267.077C833.603 252.587 806.98 239.322 790.607 226.716C774.187 214.073 768.076 202.091 765.201 190.265C763.774 184.393 763.147 178.567 762.435 172.812C761.72 167.038 760.917 161.312 759.15 155.513C755.636 143.975 748.267 132.016 729.881 119.101C715.955 109.318 699.037 107.751 684.018 109.269C669.008 110.785 656.022 115.371 650.092 117.743L649.303 115.906C651.76 114.774 655.216 113.002 658.587 110.667C661.967 108.326 665.203 105.46 667.282 102.157C669.345 98.8807 670.257 95.2045 669.08 91.1338C667.891 87.0222 664.527 82.3524 657.693 77.2285C624.303 52.194 584.976 52.1872 546.255 48.9346C507.96 45.7177 470.423 39.2941 441 1.63184Z";
-
-function CartoucheSVG() {
-  return (
-    <svg viewBox="0 0 882 535" fill="none" className="absolute inset-0 w-full h-full" aria-hidden>
-      {/* Parchment fill — the exact inner subpath of the baroque frame.
-          This traces the baroque interior boundary precisely (incl. arm areas),
-          so the fill matches the frame's interior shape, not a generic ellipse. */}
-      <path d={BAROQUE_INNER} fill="#F5ECD6" opacity="0.97" />
-    </svg>
-  );
-}
+const [na0, na1, na2] = products.filter((p) => p.isNew).slice(0, 3);
+const newArrivals = [na1, na0, na2]; // Downes first, then Brilliance, then Grove
 
 /* ── Thin ornament divider ────────────────────────────────── */
 function OrnamentDivider({ light = false, className = "" }: { light?: boolean; className?: string }) {
@@ -72,7 +52,7 @@ function GalaButton({ href, children, light = false, fullWidth = false }: { href
   return (
     <Link
       href={href}
-      className={`${fullWidth ? "flex justify-center" : "inline-flex w-fit"} items-center gap-3 text-[9px] tracking-[0.45em] uppercase px-9 py-3.5 transition-all duration-200 hover:opacity-85`}
+      className={`${fullWidth ? "flex justify-center" : "inline-flex w-fit"} items-center gap-3 text-[9px] tracking-[0.45em] uppercase whitespace-nowrap px-9 py-3.5 transition-all duration-200 hover:opacity-85`}
       style={light
         ? { background: "var(--color-terracotta)", color: "var(--color-cream-50)" }
         : { background: "var(--color-espresso)", color: "var(--color-cream-50)" }
@@ -81,6 +61,49 @@ function GalaButton({ href, children, light = false, fullWidth = false }: { href
       {children}
       <span className="text-[11px]">→</span>
     </Link>
+  );
+}
+
+/* ── Ornate frame SVG overlay ─────────────────────────────── */
+function OrnateFrame({ color = "var(--color-terracotta)" }: { color?: string }) {
+  return (
+    <svg viewBox="0 0 75 100" preserveAspectRatio="none" fill="none" stroke={color}
+      strokeLinecap="round" strokeLinejoin="round" aria-hidden
+      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 10 }}>
+      {/* Double border */}
+      <rect x="0.5" y="0.5" width="74" height="99" strokeWidth="0.7" />
+      <rect x="3.5" y="3.5" width="68" height="93" strokeWidth="0.35" />
+      {/* Top-left corner */}
+      <path d="M 0.5,22 C 0.5,10 10,0.5 22,0.5" strokeWidth="1.1" />
+      <path d="M 3.5,22 C 3.5,13 13,3.5 22,3.5" strokeWidth="0.4" />
+      <path d="M 0.5,22 C 2.5,24 5,23 3.5,20 C 2,17 -0.5,18.5 0.5,22" strokeWidth="0.55" />
+      <path d="M 22,0.5 C 24,2.5 23,5 20,3.5 C 17,2 18.5,-0.5 22,0.5" strokeWidth="0.55" />
+      {/* Top-right corner */}
+      <path d="M 74.5,22 C 74.5,10 65,0.5 53,0.5" strokeWidth="1.1" />
+      <path d="M 71.5,22 C 71.5,13 62,3.5 53,3.5" strokeWidth="0.4" />
+      <path d="M 74.5,22 C 72.5,24 70,23 71.5,20 C 73,17 75.5,18.5 74.5,22" strokeWidth="0.55" />
+      <path d="M 53,0.5 C 51,2.5 52,5 55,3.5 C 58,2 56.5,-0.5 53,0.5" strokeWidth="0.55" />
+      {/* Bottom-left corner */}
+      <path d="M 0.5,78 C 0.5,90 10,99.5 22,99.5" strokeWidth="1.1" />
+      <path d="M 3.5,78 C 3.5,87 13,96.5 22,96.5" strokeWidth="0.4" />
+      <path d="M 0.5,78 C 2.5,76 5,77 3.5,80 C 2,83 -0.5,81.5 0.5,78" strokeWidth="0.55" />
+      <path d="M 22,99.5 C 24,97.5 23,95 20,96.5 C 17,98 18.5,100.5 22,99.5" strokeWidth="0.55" />
+      {/* Bottom-right corner */}
+      <path d="M 74.5,78 C 74.5,90 65,99.5 53,99.5" strokeWidth="1.1" />
+      <path d="M 71.5,78 C 71.5,87 62,96.5 53,96.5" strokeWidth="0.4" />
+      <path d="M 74.5,78 C 72.5,76 70,77 71.5,80 C 73,83 75.5,81.5 74.5,78" strokeWidth="0.55" />
+      <path d="M 53,99.5 C 51,97.5 52,95 55,96.5 C 58,98 56.5,100.5 53,99.5" strokeWidth="0.55" />
+      {/* Top center ornament */}
+      <path d="M 37.5,0.5 L 34,4 M 37.5,0.5 L 41,4" strokeWidth="0.8" />
+      <path d="M 37.5,3.5 L 34.5,6 L 37.5,8.5 L 40.5,6 Z" strokeWidth="0.45" />
+      <line x1="23" y1="3.5" x2="33" y2="3.5" strokeWidth="0.35" />
+      <line x1="42" y1="3.5" x2="52" y2="3.5" strokeWidth="0.35" />
+      {/* Bottom center ornament */}
+      <path d="M 37.5,99.5 L 34,96 M 37.5,99.5 L 41,96" strokeWidth="0.8" />
+      <path d="M 37.5,96.5 L 34.5,94 L 37.5,91.5 L 40.5,94 Z" strokeWidth="0.45" />
+      <line x1="23" y1="96.5" x2="33" y2="96.5" strokeWidth="0.35" />
+      <line x1="42" y1="96.5" x2="52" y2="96.5" strokeWidth="0.35" />
+    </svg>
   );
 }
 
@@ -106,12 +129,10 @@ function VintageCard({ product, light = false }: { product: Product; light?: boo
       onMouseLeave={() => setHovered(false)}
     >
       <Link href={`/products/${product.handle}`} className="block">
-        <div className="relative mb-5" style={{ padding: "7px", border: "1px solid var(--color-terracotta)" }}>
-          <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-terracotta" />
-          <div className="absolute top-2 right-2 w-4 h-4 border-t border-r border-terracotta" />
-          <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-terracotta" />
-          <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-terracotta" />
-          <div className="relative aspect-[3/4] overflow-hidden">
+        <div className="relative mb-5" style={{ padding: "8%" }}>
+          <img src="/frame.png" alt="" aria-hidden
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 10, objectFit: "fill", opacity: 0.45 }} />
+          <div className="relative aspect-square overflow-hidden">
             <Image
               src={hovered && product.images[1] ? product.images[1] : product.images[0]}
               alt={product.name}
@@ -164,123 +185,188 @@ function VintageCard({ product, light = false }: { product: Product; light?: boo
 }
 
 /* ── Hero ─────────────────────────────────────────────────── */
+// Figma frame: 1280×832
+const FRAME_W = 1280, FRAME_H = 832;
+
 function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const archRef    = useRef<HTMLDivElement>(null);
-  const [clip, setClip] = useState({ sw: 800, sh: 500, ax: 0, ay: 0, aw: 300 });
+  const logoRef    = useRef<HTMLImageElement>(null);
 
+  // Logo-only parallax: drifts upward slower than the scene
   useEffect(() => {
-    const measure = () => {
-      const s = sectionRef.current;
-      const a = archRef.current;
-      if (!s || !a) return;
-      const sr = s.getBoundingClientRect();
-      const ar = a.getBoundingClientRect();
-      setClip({
-        sw: sr.width,
-        sh: sr.height,
-        ax: ar.left - sr.left,
-        ay: ar.top  - sr.top,
-        aw: ar.width,
-      });
+    const section = sectionRef.current;
+    const logo    = logoRef.current;
+    if (!section || !logo) return;
+    // Capture resting top so parallax offset is 0 at page load
+    const restingScrollY = window.scrollY;
+    const onScroll = () => {
+      const { top, height } = section.getBoundingClientRect();
+      if (top > height || top < -height) return;
+      logo.style.transform = `translateX(-50%) translateY(calc(-50% + ${(window.scrollY - restingScrollY) * 0.4}px))`;
     };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const archScale = clip.aw / 550;
+  return (
+    <section ref={sectionRef} data-hero aria-label="Hero"
+      style={{ height: "var(--hero-h)", position: "relative", overflow: "hidden", background: "#1A0A06" } as React.CSSProperties}>
+      <style>{`
+        [data-hero] {
+          --hero-h: clamp(43svh, 35vw, 55svh);
+          --hero-obj: left 30%;
+        }
+        /* Subtle bottom fade on desktop — hides floor without touching carpet */
+        [data-hero]::after {
+          content: '';
+          position: absolute;
+          bottom: 0; left: 0; right: 0;
+          height: 15%;
+          background: linear-gradient(to bottom, transparent, rgba(26,10,6,0.55));
+          pointer-events: none;
+          z-index: 3;
+        }
+        /* Medium + mobile: 42vw shows carpet but clips before the floor */
+        @media (max-width: 1024px) {
+          [data-hero] {
+            --hero-h: calc(100vw * 0.42);
+            --hero-obj: left 0%;
+          }
+          [data-hero]::after { display: none; }
+        }
+      `}</style>
+
+      {/* Layer 0: Background — same crop as carpet layer so overlay stays aligned */}
+      <img src="/hero-bg.png" alt="" aria-hidden
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "var(--hero-obj)", pointerEvents: "none" }} />
+
+      {/* Layer 1: Logo — centered, upper portion */}
+      <img ref={logoRef} src="/hero-logo.png" alt="Kaaleen"
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          width: "33%",
+          height: "auto",
+          transform: "translateX(-50%) translateY(-50%)",
+          willChange: "transform",
+          pointerEvents: "none",
+          zIndex: 1,
+        }} />
+
+      {/* Layer 2: Carpet — same crop as bg; hidden on mobile */}
+      <img data-carpet src="/hero-carpet.png" alt="" aria-hidden
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "var(--hero-obj)", pointerEvents: "none", zIndex: 2 }} />
+    </section>
+  );
+}
+
+/* ── Craft editorial section ──────────────────────────────── */
+function CraftSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const textRef    = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const text    = textRef.current;
+    if (!section || !text) return;
+    const onScroll = () => {
+      const { top, height } = section.getBoundingClientRect();
+      const viewportH = window.innerHeight;
+      if (top > viewportH || top < -height) return;
+      // 0 when section center is at viewport center; keeps text within bounds
+      const offset = (viewportH / 2 - (top + height / 2)) * 0.18;
+      text.style.transform = `translateY(calc(-50% + ${offset}px))`;
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const textContent = (
+    <>
+      <OrnamentDivider light className="mb-6 justify-end" />
+      <p className="text-[9px] tracking-[0.55em] uppercase mb-5"
+        style={{ color: "rgba(232,215,170,0.75)" }}>
+        The Art of Craft
+      </p>
+      <h3 className="font-serif text-cream-50 leading-tight mb-6"
+        style={{ fontSize: "clamp(2rem, 3.2vw, 3.8rem)", textAlign: "right" }}>
+        The Finest <span className="italic">Hand&#8209;Knotted</span><br />Carpets in India
+      </h3>
+      <p className="text-sm leading-relaxed mb-8"
+        style={{ color: "rgba(232,215,170,0.78)", maxWidth: "26ch", textAlign: "right" }}>
+        Each carpet is a collaboration between artisan and tradition — woven over months,
+        knot by knot, in the workshops of Agra, Jaipur and Mirzapur.
+      </p>
+      <GalaButton href="/collections/hand-knotted" light>Shop This Collection</GalaButton>
+    </>
+  );
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative"
-      style={{ height: "50svh", background: "#1A040A", overflow: "hidden" }}
-    >
-      {/* Darkened background — same image, reduced opacity */}
-      <img
-        src="/dye-pots-hero.webp"
-        alt=""
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ opacity: 0.38 }}
-      />
-
-      {/* Vignette — radial gradient darkening edges */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 30%, rgba(26,4,10,0.72) 100%)",
-        }}
-      />
-
-      {/* Full-section SVG: same image at FULL brightness, clipped to arch shape.
-          viewBox matches section pixels → same zoom as the object-cover background. */}
-      <svg
-        className="absolute inset-0 pointer-events-none"
-        style={{ width: clip.sw, height: clip.sh }}
-        viewBox={`0 0 ${clip.sw} ${clip.sh}`}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <clipPath id="hero-arch-clip">
-            <path
-              d={MUGHAL_PATH}
-              transform={`translate(${clip.ax} ${clip.ay}) scale(${archScale})`}
-            />
-          </clipPath>
-          <linearGradient id="arch-fade" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="55%" stopColor="#1A040A" stopOpacity="0" />
-            <stop offset="100%" stopColor="#1A040A" stopOpacity="0.6" />
-          </linearGradient>
-        </defs>
-        {/* Full-section image at full brightness, clipped to arch */}
-        <image
-          href="/dye-pots-hero.webp"
-          x="0" y="0"
-          width={clip.sw} height={clip.sh}
-          preserveAspectRatio="xMidYMid slice"
-          clipPath="url(#hero-arch-clip)"
-        />
-        {/* Bottom gradient for logo readability */}
-        <rect
-          x={clip.ax} y={clip.ay}
-          width={clip.aw} height={clip.aw * 787 / 550}
-          fill="url(#arch-fade)"
-          clipPath="url(#hero-arch-clip)"
-        />
-
-      </svg>
-
-      {/* Content column */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <div style={{ width: "min(175px, 34vw)" }}>
-
-          {/* Arch placeholder — measured for SVG clip alignment */}
-          <div ref={archRef} style={{ width: "100%", aspectRatio: "550/787", position: "relative" }}>
-            {/* Logo inside arch, 28px from bottom */}
-            <div className="absolute inset-x-0 flex justify-center" style={{ bottom: "28px" }}>
-              <img
-                src="/logo.png"
-                alt="Kaaleen"
-                style={{
-                  height: "clamp(2rem, 7vw, 4rem)",
-                  width: "auto",
-                  maxWidth: "82%",
-                  filter: "invert(1)",
-                  opacity: 0.95,
-                }}
-              />
-            </div>
-          </div>
-
-          {/* CTA — 24px below arch */}
-          <div style={{ marginTop: "12px" }}>
-            <GalaButton href="/collections" light fullWidth>Shop the Collection</GalaButton>
-          </div>
-
+    <>
+      {/* ── MOBILE: stacked layout, no overflow effect ─────────── */}
+      <section className="block md:hidden" style={{ background: "#270303" }}>
+        <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
+          <img src="/craft-bg.png" alt="" aria-hidden
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
+                     objectFit: "cover", objectPosition: "center" }} />
+          <img src="/craft-carpet.png" alt="" aria-hidden
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
+                     objectFit: "cover", objectPosition: "center",
+                     mixBlendMode: "screen" }} />
         </div>
-      </div>
-    </section>
+        <div className="flex flex-col items-center text-center px-6 py-10">
+          <OrnamentDivider light className="mb-6" />
+          <p className="text-[9px] tracking-[0.55em] uppercase mb-5"
+            style={{ color: "rgba(232,215,170,0.75)" }}>
+            The Art of Craft
+          </p>
+          <h3 className="font-serif text-cream-50 leading-tight mb-6"
+            style={{ fontSize: "clamp(2rem, 8vw, 3rem)" }}>
+            The Finest <span className="italic">Hand&#8209;Knotted</span><br />Carpets in India
+          </h3>
+          <p className="text-sm leading-relaxed mb-8 text-center"
+            style={{ color: "rgba(232,215,170,0.78)" }}>
+            Each carpet is a collaboration between artisan and tradition — woven over months,
+            knot by knot, in the workshops of Agra, Jaipur and Mirzapur.
+          </p>
+          <GalaButton href="/collections/hand-knotted" light>Shop This Collection</GalaButton>
+        </div>
+      </section>
+
+      {/* ── DESKTOP/TABLET: absolute parallax layout with carpet overflow ── */}
+      <section ref={sectionRef} className="relative hidden md:block"
+        style={{ background: "#270303", minHeight: "clamp(480px, 48vw, 660px)", zIndex: 1, position: "relative" }}>
+
+        {/* Layer 0: bg — 140% height matches carpet so objectFit:cover gives identical crop; clipped to section */}
+        <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+          <img src="/craft-bg.png" alt="" aria-hidden
+            style={{ position: "absolute", left: 0, top: 0,
+                     width: "65%", height: "115%",
+                     objectFit: "cover", objectPosition: "center",
+                     pointerEvents: "none" }} />
+        </div>
+
+        {/* Layer 1: text — clipped to section so parallax never bleeds into next section */}
+        <div style={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 1 }}>
+          <div ref={textRef} className="absolute flex flex-col justify-center items-end text-right"
+            style={{ left: "52%", top: "50%", transform: "translateY(-50%)",
+                     width: "44%", paddingRight: "3rem",
+                     willChange: "transform" }}>
+            {textContent}
+          </div>
+        </div>
+
+        {/* Layer 2: carpet — 115% height overflows below section; same crop as bg (identical height ratio) */}
+        <img src="/craft-carpet.png" alt="" aria-hidden
+          style={{ position: "absolute", left: 0, top: 0,
+                   width: "65%", height: "115%",
+                   objectFit: "cover", objectPosition: "center",
+                   mixBlendMode: "screen", pointerEvents: "none", zIndex: 2 }} />
+      </section>
+    </>
   );
 }
 
@@ -293,47 +379,91 @@ export default function VintageHomePage() {
       <HeroSection />
 
       {/* ── THE NEW COLLECTION ──────────────────────────────── */}
-      <section className="py-24 px-6 md:px-16" style={{ background: "var(--color-cream-50)", color: "var(--color-espresso)" }}>
-        <OrnateHeader eyebrow="just arrived" title="The New Collection" />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
-          {newArrivals.map((p) => <VintageCard key={p.id} product={p} />)}
-        </div>
-        <div className="flex justify-center mt-14">
-          <GalaButton href="/collections">View All Carpets</GalaButton>
+      {/*
+        Border: CSS border-image using frame-2.png as a 9-slice border.
+        This tiles the lattice edge correctly at any element height — no PNG overlay.
+        Arch shape: SVG clipPath with objectBoundingBox so it scales with each card.
+        Layout: 1-column on mobile (stacked), 3-column on md+ desktop.
+      */}
+      <section className="new-collection-section" style={{ background: "#ECD7A8", color: "var(--color-espresso)" }}>
+        {/* Scalable arch clip-path — coordinates normalized from 292×353 viewBox to 0-1 */}
+        <svg width="0" height="0" aria-hidden style={{ position: "absolute" }}>
+          <defs>
+            <clipPath id="mughalArch" clipPathUnits="objectBoundingBox">
+              <path d="M1 1H0V0.37352C0.20545,0.29163 0.08704,0.23852 0.17181,0.16519C0.20402,0.13731 0.24983,0.15647 0.26337,0.16313C0.25209,0.15677 0.22222,0.13573 0.25363,0.10672C0.33,0.03622 0.43362,0.10672 0.5,0C0.56636,0.10672 0.67,0.03622 0.74636,0.10672C0.77778,0.13577 0.74791,0.15677 0.73664,0.16313C0.75017,0.15648 0.79596,0.13731 0.82818,0.16519C0.91295,0.23852 0.79454,0.29163 1,0.37352V1Z" />
+            </clipPath>
+            {/* Pixel-coord clip for inner-shadow SVG overlays (292×353 space) */}
+            <clipPath id="mughalArchInnerClip">
+              <path d="M292 353H0V131.87C59.9927 102.94 25.4211 84.1985 50.1709 58.31C59.5774 48.4708 72.9519 55.2344 76.903 57.589C73.6089 55.3299 64.8879 47.9191 74.0618 37.6773C96.36 12.7834 126.622 37.6773 146 0C165.378 37.6773 195.64 12.7834 217.938 37.6773C227.112 47.9195 218.39 55.3301 215.096 57.589C219.047 55.2346 232.422 48.4705 241.829 58.31C266.579 84.1985 232.007 102.94 292 131.87V353Z" />
+            </clipPath>
+            <filter id="mughalArchShadowBlur" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="13" />
+            </filter>
+          </defs>
+        </svg>
+
+        <div className="py-12 px-4 md:px-16">
+          <OrnateHeader eyebrow="just arrived" title="The New Collection" />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 mt-12">
+            {newArrivals.map((p, idx) => {
+              // First card (Downes): room scene is default, product shot on hover
+              const defaultImg = idx === 0 ? (p.images[1] ?? p.images[0]) : p.images[0];
+              const hoverImg  = idx === 0 ? p.images[0] : (p.images[1] ?? p.images[0]);
+              return (
+              <Link key={p.id} href={`/products/${p.handle}`}
+                className="group flex flex-col items-center gap-5">
+                {/* Arch-clipped carpet image with hover swap + inner shadow */}
+                <div className="relative w-full max-w-[280px] md:max-w-none" style={{ aspectRatio: "292/353" }}>
+                  {/* Primary image — fades out on hover */}
+                  <img src={defaultImg} alt={p.name}
+                    className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-0"
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center",
+                             clipPath: "url(#mughalArch)" }} />
+                  {/* Hover image — fades in on hover */}
+                  <img src={hoverImg} alt="" aria-hidden
+                    className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center",
+                             clipPath: "url(#mughalArch)" }} />
+                  {/* Inner shadow — blurred stroke on the arch outline, clipped to arch interior */}
+                  <svg className="absolute inset-0 w-full h-full pointer-events-none"
+                    viewBox="0 0 292 353" preserveAspectRatio="none">
+                    <path
+                      d="M292 353H0V131.87C59.9927 102.94 25.4211 84.1985 50.1709 58.31C59.5774 48.4708 72.9519 55.2344 76.903 57.589C73.6089 55.3299 64.8879 47.9191 74.0618 37.6773C96.36 12.7834 126.622 37.6773 146 0C165.378 37.6773 195.64 12.7834 217.938 37.6773C227.112 47.9195 218.39 55.3301 215.096 57.589C219.047 55.2346 232.422 48.4705 241.829 58.31C266.579 84.1985 232.007 102.94 292 131.87V353Z"
+                      fill="none"
+                      stroke="rgba(0,0,0,0.30)"
+                      strokeWidth="32"
+                      filter="url(#mughalArchShadowBlur)"
+                      clipPath="url(#mughalArchInnerClip)"
+                    />
+                  </svg>
+                </div>
+                {/* Product info */}
+                <div className="text-center">
+                  <p className="font-serif italic mb-1"
+                    style={{ fontSize: "clamp(0.75rem, 1vw, 0.9rem)", color: "var(--color-espresso)" }}>
+                    {p.name}
+                  </p>
+                  <p className="text-[10px] tracking-[0.25em]" style={{ color: "var(--color-espresso-muted)" }}>
+                    ₹{p.price.toLocaleString("en-IN")}
+                  </p>
+                  <p className="text-[9px] tracking-[0.3em] uppercase mt-0.5" style={{ color: "var(--color-espresso-muted)" }}>
+                    {p.material}
+                  </p>
+                </div>
+              </Link>
+              );
+            })}
+          </div>
+
+          <div className="flex justify-center mt-12 mb-8">
+            <GalaButton href="/collections">Shop All Collection</GalaButton>
+          </div>
         </div>
       </section>
 
-      {/* ── EDITORIAL — dark split panel ────────────────────── */}
-      <section className="grid md:grid-cols-2" style={{ background: "#200608" }}>
-        <div className="relative" style={{ minHeight: "560px" }}>
-          <Image
-            src={`${CDN}/Brilliance.jpg`}
-            alt="Hand-Knotted collection"
-            fill
-            className="object-cover"
-            style={{ filter: "brightness(0.7) sepia(0.3)" }}
-            unoptimized
-          />
-          <div className="absolute inset-6 pointer-events-none" style={{ border: "1px solid rgba(232,215,170,0.12)" }} />
-        </div>
-        <div className="flex flex-col justify-center px-10 md:px-16 py-20 md:py-0">
-          <OrnamentDivider light className="mb-8 justify-start" />
-          <p className="text-[9px] tracking-[0.55em] uppercase mb-6" style={{ color: "rgba(232,215,170,0.38)" }}>
-            The Art of Craft
-          </p>
-          <h3
-            className="font-serif text-cream-50 leading-tight mb-8"
-            style={{ fontSize: "clamp(1.4rem, 3vw, 3.2rem)" }}
-          >
-            The Finest <span className="italic">Hand-Knotted</span><br />
-            Carpets in India
-          </h3>
-          <p className="text-sm leading-relaxed mb-10 max-w-xs" style={{ color: "rgba(232,215,170,0.42)" }}>
-            Each carpet is a collaboration between artisan and tradition — woven over months, knot by knot, in the workshops of Agra, Jaipur and Mirzapur.
-          </p>
-          <GalaButton href="/collections/hand-knotted" light>Shop This Collection</GalaButton>
-        </div>
-      </section>
+      {/* ── EDITORIAL ───────────────────────────────────────── */}
+      <CraftSection />
 
       {/* ── FEATURED WORKS ──────────────────────────────────── */}
       <section className="py-24 px-6 md:px-16">
@@ -347,21 +477,27 @@ export default function VintageHomePage() {
       <section className="py-24 px-6 md:px-20" style={{ background: "var(--color-cream-100)" }}>
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div className="relative">
-            <div className="relative aspect-[4/5]" style={{ boxShadow: "8px 8px 0 var(--color-terracotta)" }}>
-              <Image
-                src={`${CDN}/harb1_1.png`}
-                alt="Artisan at work"
-                fill
-                className="object-cover"
-                style={{ filter: "sepia(0.45) contrast(1.05) brightness(0.95)" }}
-                unoptimized
-              />
-              <div className="absolute inset-4 pointer-events-none" style={{ border: "1px solid rgba(232,215,170,0.25)" }} />
+            <div className="relative aspect-[716/968]">
+              {/* Carpet image inset inside the frame's inner border (border at ~7% from each edge) */}
+              <div className="absolute overflow-hidden" style={{ inset: "8.5% 13%", zIndex: 1 }}>
+                <Image
+                  src={`${CDN}/harb1_1.png`}
+                  alt="Artisan at work"
+                  fill
+                  className="object-cover"
+                  unoptimized
+                />
+              </div>
+              {/* Frame on top — decorative border appears around the carpet */}
+              <img src="/frame-tradition.png" alt="" aria-hidden
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%",
+                         pointerEvents: "none", objectFit: "fill", zIndex: 2 }} />
             </div>
           </div>
-          <div>
-            <OrnamentDivider className="mb-8 justify-start" />
+          <div className="text-center md:text-left">
+            <OrnamentDivider className="mb-8 justify-center md:justify-start" />
             <p className="text-[9px] tracking-[0.5em] uppercase text-espresso-muted mb-6">A 500-year tradition</p>
+            <OrnamentDivider className="mb-8 justify-center md:justify-start" />
             <blockquote
               className="font-serif italic text-espresso leading-snug mb-8"
               style={{ fontSize: "clamp(1.6rem, 3.2vw, 2.4rem)" }}
@@ -374,7 +510,9 @@ export default function VintageHomePage() {
             <p className="text-espresso-muted text-sm leading-relaxed mb-10">
               A single 6x9 hand-knotted carpet requires three months and over 160,000 individual knots.
             </p>
-            <GalaButton href="/collections/hand-knotted">Explore Hand-Knotted</GalaButton>
+            <div className="flex justify-center md:justify-start">
+              <GalaButton href="/collections/hand-knotted">Explore Hand-Knotted</GalaButton>
+            </div>
           </div>
         </div>
       </section>

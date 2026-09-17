@@ -6,7 +6,6 @@ import { ThemeProvider } from "@/lib/theme-context";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartSidebar from "@/components/CartSidebar";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 const dmSans   = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans",     weight: ["300", "400", "500"] });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", style: ["normal", "italic"] });
@@ -29,7 +28,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <CartSidebar />
             <main>{children}</main>
             <Footer />
-            <ThemeSwitcher />
           </CartProvider>
         </ThemeProvider>
       </body>

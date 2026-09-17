@@ -43,6 +43,22 @@
   to { transform: translateX(0); }
 }
 
+/* New Collection section — border-image uses frame-2.png lattice as a 9-slice border */
+.new-collection-section {
+  border: 52px solid transparent;
+  border-image-source: url('/frame-2.png');
+  border-image-slice: 52 fill;
+  border-image-repeat: round;
+  border-image-width: 52px;
+}
+@media (max-width: 767px) {
+  .new-collection-section {
+    border-width: 28px;
+    border-image-width: 28px;
+    border-image-slice: 28 fill;
+  }
+}
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
